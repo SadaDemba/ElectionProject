@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { CarteComponent } from './carte/carte.component';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
-import { ConnexionComponent } from './components/navbar/connexion/connexion/connexion.component';
+import { ConnexionComponent } from './components/navbar/connexion/connexion.component';
 import { InscriptionComponent } from './components/navbar/inscription/inscription.component';
 import { VoterComponent } from './components/navbar/voter/voter.component';
 import { HeaderComponent } from './components/navbar/header/header.component';
