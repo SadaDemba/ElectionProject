@@ -1,1 +1,47 @@
-<p>inscription works!</p>
+
+<body>
+  <div class="signup-form">
+      <form action="/examples/actions/confirmation.php" method="post" class="form-horizontal">
+      <div class="row">
+        <div class="col-8 offset-4">
+          <h2>S'inscrire</h2>
+        </div>
+      </div>
+        <label class="col-form-label col-4">Région</label>
+        <div class="col-8">
+          <select  name="region"    class="form-control" id="region">
+            <option></option>
+          </select>
+        </div>
+        <label *ngIf="!expression" class="col-form-label col-4">Commune</label>
+        <div *ngIf="!expression" class="col-8">
+          <select  name="commune"    class="form-control" id="commune">
+            <option></option>
+          </select>
+        </div>
+        <label *ngIf="!expression" class="col-form-label col-4">Centre</label>
+        <div *ngIf="!expression" class="col-8">
+          <select  name="commune"    class="form-control" id="commune">
+            <option></option>
+          </select>
+        </div>
+
+      <div class="form-group row">
+        <div class="col-8 offset-4">
+
+          <button type="button" (click)="disponible()"class="btn btn-primary btn-lg">Suivant</button>
+        </div>
+      </div>
+      </form>
+    <div class="text-center">J' ai dèja choisie ma chambre  <a href="#">Quitter</a></div>
+  </div>
+  </body>
+
+
+
+<footer class="py-5  " style="background-color: #b7ddf8; color: darkslategrey;">
+  <div class="container">
+    <p class="m-0 text-center text-white">Universite Thiès &copy;  Hebergement des Etudiants</p>
+  </div>
+  <!-- /.container -->
+</footer>
