@@ -1,0 +1,60 @@
+hr {
+    border: none;
+    color: rgb(255, 255, 255);
+    overflow: visible;
+    text-align: center;
+    height: 2px;
+    width: 900px;
+}
+
+.linear-gradient {
+    background: linear-gradient(to right, rgb(56, 5, 173), white);
+  }
+  
+.textcolor {
+    color: aliceblue;
+    font-size: x-large;
+    font-style: normal;
+    font-family: 'copperplate gothic';
+    font-weight: bolder;
+    text-align: center;
+}
+
+.div{
+    margin-top: 15px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 15px;
+
+}
+
+.div1{
+    margin-top: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+
+}
+
+.globalcolor
+{
+    background: linear-gradient(rgb(19, 2, 59) 10%, rgb(135, 144, 197));
+    height: fit-content;
+}
+.bar2
+{
+    background-color: rgb(38, 3, 119);
+}
+.btnmg
+{
+    margin-left: 10px;
+    margin-right: 10px;
+    background: rgb(38, 3, 119);
+    height: 30px;
+    width: 220px;
+    
+}
+.trigger-btn{
+    display: inline-block;
+    margin: 10px auto;
+}

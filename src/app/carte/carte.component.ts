@@ -15,7 +15,7 @@ export class CarteComponent implements AfterViewInit {
       })
     ],
     zoom: 7,
-    center: latLng([ 14.497401, -14.452362 ])
+    center: latLng([ 13.98924268306503, -14.286974147213016 ])
   };
 
 
