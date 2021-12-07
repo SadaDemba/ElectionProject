@@ -10,6 +10,7 @@ import { ConnexionComponent } from './components/navbar/connexion/connexion.comp
 import { InscriptionComponent } from './components/navbar/inscription/inscription.component';
 import { VoterComponent } from './components/navbar/voter/voter.component';
 import { HeaderComponent } from './components/navbar/header/header.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HeaderComponent } from './components/navbar/header/header.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    LeafletModule
+    LeafletModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

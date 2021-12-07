@@ -10,7 +10,7 @@
         <label class="col-form-label col-4">Région</label>
         <div class="col-8">
           <select  name="region"    class="form-control" id="region">
-            <option></option>
+            <option  *ngFor="let region of regions" [value]="region.id">{{region?.libelle}}</option>
           </select>
         </div>
         <label *ngIf="!expression" class="col-form-label col-4">Commune</label>
@@ -33,7 +33,7 @@
         </div>
       </div>
       </form>
-    <div class="text-center">J' ai dèja choisie ma chambre  <a href="#">Quitter</a></div>
+    <div class="text-center">Je me suis dèja inscrit<a href="#">Quitter</a></div>
   </div>
   </body>
 
