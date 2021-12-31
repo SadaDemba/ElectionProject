@@ -1,7 +1,8 @@
+import { ListElectoral } from 'src/app/modele/listelectoral';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ListElectoral } from '../modele/listelectoral';
+
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,12 @@ export class ListelectoralService {
   getcandidats(param:any)
   {
     return this.http.get<ListElectoral[]>(this.url +'/candidat/'+param);
+  }
+
+  Edit_Candidat(id :any,param:ListElectoral)
+  {
+    console.log("in getEdit : "+JSON.stringify(param));
+    return   this.http.put<ListElectoral>(this.url+'/candidats/'+id,param,this.httpOption);
   }
 
 }

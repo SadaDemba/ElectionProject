@@ -12,7 +12,7 @@ import { HttpHeaders } from '@angular/common/http';
   styleUrls: ['./electoral.component.css']
 })
 export class ElectoralComponent implements OnInit {
-  listelectoral:any=[];
+  listelectoral:any;
   closeResult = '';
   titre:any;
   proccessing=false;
@@ -44,6 +44,10 @@ export class ElectoralComponent implements OnInit {
 }
 successmsg(){
   this.toastr.success("Enregistrement effectuer avec succès",'Success')
+}
+
+successmsg1(){
+  this.toastr.success("Modification liste effectuer avec succès",'Success')
 }
 
 
@@ -103,7 +107,13 @@ successmsg(){
  }
 
 
-
+edit_list_electoral()
+{
+  this.service.Edit_Candidat(this.liste.id,this.liste).subscribe(data=>{
+    this.successmsg1();
+    this.ngOnInit();
+})
+}
 
 
 
