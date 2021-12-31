@@ -1,0 +1,119 @@
+<nav class="navbar navbar-expand-lg navbar-light nav-pills nav-fill justify-content-between" style="background-color: #698cb4fb;" >
+  <img src="../../assets/1993r.jpg" style="width:100px;height:50px;" alt="">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+
+    <ul class="nav navbar-nav  ">
+
+      <li class="nav-item">
+        <a  class="trigger-btn nav-link" style="color: rgb(243, 249, 250);" data-toggle="modal">Se Deconnecter</a>
+      </li>
+    </ul>
+
+  </div>
+</nav><br>
+<div class="container">
+  <div class="row">
+    <marquee width="100%" scrollamount="7" scrolldelay="10">
+      <!-- L'objet parcourt 2px chaque 10ms -->
+      <img src="https://image.freepik.com/vecteurs-libre/voter-ici-modele-vecteur-illustration-site-web-page-destination_128772-376.jpg" style="width:1000px;height:250px;">
+   </marquee>
+      <div class="col-4">
+
+          <div class="card border-info mb-4">
+              <div class="card-block">
+                <div class="card-header"><h3 class="card-title"><b>Electeur Numéro:</b>&nbsp;&nbsp;<span class="badge badge-info">{{veri?.id}}</span>  <a  [routerLink]="" (click)="open(content1,veri)"  class="edit" title="changer commune de vote"  data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a></h3> </div>
+                  <h5 class="card-title fs-4"><b>Prénom:</b>&nbsp;&nbsp;{{veri?.prenom}}</h5>
+                  <h5 class="card-title fs-4"><b>Nom:</b>&nbsp;&nbsp;{{veri?.nom}}</h5>
+                  <h5 class="card-title fs-4"><b>Cni:</b>&nbsp;&nbsp;{{veri?.cni}}</h5>
+                  <h5 class="card-title fs-4"><b>Adresse:</b>&nbsp;&nbsp;{{veri?.adresse}} </h5>
+                  <h5 class="card-title fs-4"><b>Commune:</b>&nbsp;&nbsp;{{veri?.comm?.libelle}} </h5>
+              </div>
+
+          </div>
+      </div>
+
+      <div class="col-8">
+        <div class="card border-info mb-8">
+            <div *ngFor="let candidat of candidats" class="card-block">
+              <div  class="card h-50">
+
+                <div class="card-header"><h3 class="text-wrap" style="width: 20rem; height: 2rem " ><b> Candidat Numéro:</b><span class="badge badge-info">{{candidat?.id}}</span><div class="nouveautes"><input  class="form-check-input pull-right" type="checkbox" (click)="check({annee:candidat.id})" [value]="candidat.id" id="flexCheckDefault"></div> </h3><p></p> </div>
+                <img class="card-img-top img-fluid center" src="https://thumbs.dreamstime.com/b/aucune-photo-ou-ic%C3%B4ne-d-image-vide-chargement-images-marque-manquante-non-disponible-%C3%A0-venir-silhouette-nature-simple-dans-l-215973362.jpg" style="width:200px;height:200px;"  alt="Card image cap">
+                <h4 class="card-title fs-4" ><b class="fw-bold"> Nom de la Liste:</b>&nbsp;&nbsp;  {{candidat?.nom_liste}}</h4>
+                <h4 class="card-title fs-4"><b class="fw-bold"> Representant Prénom:</b>&nbsp;&nbsp; {{candidat?.representant_prenom}}</h4>
+                <h4 class="card-title fs-4"><b class="fw-bold"> Representant Nom:</b>&nbsp;&nbsp; {{candidat?.representant_nom}}</h4>
+                <h4 class="card-title fs-4"><b class="fw-bold"> Date Naissance:</b>&nbsp;&nbsp; {{candidat?.representant_datenaissance}}</h4>
+                <h4 class="card-title fs-4"><b class="fw-bold"> Commune:</b>&nbsp;&nbsp; {{candidat?.comm?.libelle}}</h4>
+                <div class="pull-right">
+                  <button style="width:150px;height:50px;" (click)=" Addvote()"  class="button center ">Voter</button>
+                </div>
+              </div>
+              </div>
+        </div>
+    </div>
+</div>
+</div>
+
+      <footer class="py-5  "   style="background-color: #698cb4fb;" >
+        <div class="container">
+          <p class="m-0 text-center text-white">Sénégal &copy; Elections Legislatives</p>
+        </div>
+        <!-- /.container -->
+      </footer>
+
+
+
+
+
+
+
+
+<ng-template #content1 let-modal1>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Changement de lieu de vote</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal1.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+ <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="pnom">Prénom:</label>
+        <div >
+          <input [(ngModel)]="veri.prenom" disabled="disabled"  id="prenom" class="form-control" placeholder="Année Scolaire..." name="prenom" >
+        </div>
+        <label for="nom">Nom:</label>
+        <div>
+          <input [(ngModel)]="veri.nom" disabled="disabled"  id="code" type="text" class="form-control"  name="nom" >
+        </div>
+
+        <label for="cni">Cni:</label>
+        <div>
+          <input [(ngModel)]="veri.cni" disabled="disabled"   id="cni" type="text" class="form-control" placeholder="Date" name="cni" >
+        </div>
+
+        <label for="adresse">Adresse:</label>
+        <div>
+          <input [(ngModel)]="veri.adresse" disabled="disabled"   id="adresse" type="text" class="form-control" placeholder="Date" name="adresse" >
+        </div>
+
+
+
+        <label  class="col-form-label col-6">Nouvelle Commune</label>
+        <div >
+          <select  name="comm" [(ngModel)]="electeur.comm_id"   class="form-control" id="comm">
+            <option *ngFor="let commune of communes"  [value]="commune.id" >{{commune?.code}}</option>
+          </select>
+
+        </div>
+
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-warning center" (click)="Edit_Commune_electeur()+modal1.close('Save click')">Modifier</button>
+  </div>
+</ng-template>

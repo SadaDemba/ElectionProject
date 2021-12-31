@@ -1,1 +1,32 @@
-<p>voter works!</p>
+<app-home></app-home>
+<body>
+  <div class="signup-form">
+  <form action="/examples/actions/confirmation.php" method="post" class="form-horizontal">
+      <div class="row">
+        <div class="col-8 offset-4">
+          <h2>VOTER</h2>
+        </div>
+      </div>
+
+
+        <label  class="col-form-label col-4">Numéro Electeur</label>
+        <div  class="col-8">
+         <input  [(ngModel)]="cni" type="text" placeholder="Veuillez reseigner votre numéro" class="form-control" id="cni" name="cni">
+        </div>
+
+      <div class="form-group row">
+        <div  class="col-8 offset-4">
+          <button type="button" (click)="verifier()"class="btn btn-primary btn-lg">Verifier</button>
+        </div>
+        <p>{{cni}}</p>
+      </div>
+      </form>
+  </div>
+  </body>
+
+  <footer class="py-5  "  style="background-color: #698cb4fb;" >
+    <div class="container">
+      <p class="m-0 text-center text-white">Sénégal &copy; Elections Legislatives</p>
+    </div>
+    <!-- /.container -->
+  </footer>

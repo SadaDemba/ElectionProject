@@ -1,0 +1,165 @@
+<nav class="navbar navbar-expand-lg navbar-light nav-pills nav-fill justify-content-between" style="background-color: #698cb4fb;" >
+  <img src="../../assets/1993r.jpg" style="width:100px;height:50px;" alt="">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+
+      <li class="nav-item active">
+        <a class="nav-link" style="color: rgb(243, 249, 250);" href="/electoral">Liste électoral</a>
+      </li>
+      <li class="nav-item">
+        <a href="" style="color: rgb(243, 249, 250);" class="trigger-btn nav-link fa-pull-right" data-toggle="modal">Statistique</a>
+      </li>
+      <li class="nav-item">
+        <a href="/annee" style="color: rgb(243, 249, 250);" class="trigger-btn nav-link fa-pull-right" data-toggle="modal">Années</a>
+      </li>
+      <li class="nav-item">
+        <a href="" style="color: rgb(243, 249, 250);" class="trigger-btn nav-link fa-pull-right" data-toggle="modal">Créer Administrateur</a>
+      </li>
+    </ul>
+
+      <ul class="nav navbar-nav pull-right ">
+
+        <li class="nav-item pull-right ">
+          <a href="" class="trigger-btn nav-link pull-right " style="color: rgb(243, 249, 250);" data-toggle="modal">Se deconnecter</a>
+        </li>
+      </ul>
+
+  </div>
+</nav>
+<br>
+
+<div class="spinner-grow text-muted" *ngIf="proccessing"></div>
+<div class="spinner-grow text-primary" *ngIf="proccessing"></div>
+<div class="spinner-grow text-success" *ngIf="proccessing"></div>
+<div class="spinner-grow text-info" *ngIf="proccessing"></div>
+<div class="spinner-grow text-warning" *ngIf="proccessing"></div>
+<div class="spinner-grow text-danger" *ngIf="proccessing"></div>
+<div class="spinner-grow text-secondary" *ngIf="proccessing"></div>
+<div class="spinner-grow text-dark"*ngIf="proccessing"></div>
+<div class="spinner-grow text-light"*ngIf="proccessing"></div>
+
+<section class="intro">
+  <div class="bg-image h-100" style="background-color: #f5f7fa;">
+    <div class="mask d-flex align-items-center h-100">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12">
+
+              <div class="card-body p-0">
+                <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true" style="position: relative; height: 700px">
+
+                  <div class="table-title">
+                    <div class="row">
+                        <div class="col-sm-5 align-center" >
+                          <H4>Années de votes</H4><br>
+                          <div class="d-flex justify-content-evenly">
+                            <div class="search-box">
+                              <input     type="text" class="form-control" placeholder="Recherche Par Code&hellip;">
+                             </div>
+                             <div class="col-sm-7 bd-highlight">
+                              <a [routerLink]="" (click)="open1(content)"  class="btn btn-secondary"><i class="material-icons">&#xE147;</i> <span>Nouvelle Annee</span></a>
+                             </div>
+
+
+                          </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                  <table class="table table-striped mb-0">
+                     <thead style="background-color: #034a79be;">
+
+                      <tr>
+                        <th scope="col">Annee de Vote</th>
+                        <th scope="col">Code</th>
+                        <th scope="col">Annee Encours</th>
+                        <th scope="col">Actions</th>
+
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let annee of annees">
+                        <td>{{annee?.libelle}}</td>
+                        <td>{{annee?.code}}</td>
+                          <td style="text-align:center">
+                            <span *ngIf="annee?.encours">
+                            <span class="badge badge-success">Oui</span>
+                          </span>
+                            <span *ngIf="!annee.encours">
+                            <span class="badge badge-danger">Non</span>
+                          </span>
+                        </td>
+
+
+                       <td> <a  [routerLink]=""   class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                       </td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<footer class="py-5  "   style="background-color: #698cb4fb;" >
+  <div class="container">
+    <p class="m-0 text-center text-white">Sénégal &copy; Elections Legislatives</p>
+  </div>
+  <!-- /.container -->
+</footer>
+
+
+
+
+
+
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Enregistrer une nouvelle année</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+ <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="pnom">Année de vote</label>
+        <div >
+          <input [(ngModel)]="annee.libelle" id="libelle" class="form-control" placeholder="elections legislatives janvier 2023-2024 " name="libelle">
+        </div>
+        <label for="annee">Code</label>
+        <div>
+          <input [(ngModel)]="annee.code"  id="code" type="text" class="form-control" placeholder="2023" name="code">
+        </div>
+
+        <label for="sexe">En cours</label>
+        <div class="form-check">
+          <input id="checkbox" type="checkbox" name="encours" [(ngModel)]="annee.encours">
+          <label class="form-check-label" for="flexCheckDefault">
+            Valider son choix
+          </label>
+        </div>
+
+      </div>
+    </form>
+   : {{annee.encours}}
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)=" Ajouter()+modal.close('Save click')">Save</button>
+  </div>
+</ng-template>
