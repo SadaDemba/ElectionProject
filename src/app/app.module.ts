@@ -4,22 +4,24 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { CarteComponent } from './carte/carte.component';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { ConnexionComponent } from './components/navbar/connexion/connexion.component';
 import { InscriptionComponent } from './components/navbar/inscription/inscription.component';
 import { VoterComponent } from './components/navbar/voter/voter.component';
 import { HeaderComponent } from './components/navbar/header/header.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { CarteComponent } from './components/carte/carte.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    CarteComponent,
     ConnexionComponent,
     InscriptionComponent,
     VoterComponent,
-    HeaderComponent
+    HeaderComponent,
+    PageNotFoundComponent,
+    CarteComponent
   ],
   imports: [
     BrowserModule,
