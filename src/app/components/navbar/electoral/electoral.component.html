@@ -61,7 +61,7 @@
                               <input   [(ngModel)]="titre" (ngModelChange)="serarcharticle()" type="text" class="form-control" placeholder="Recherche Par Prenom&hellip;">
                              </div>
                              <div class="col-sm-7 bd-highlight">
-                              <a [routerLink]="" (click)="open(content1)"  class="btn btn-secondary"><i class="material-icons">&#xE147;</i> <span>Nouveau Candidat</span></a>
+                              <a [routerLink]="" (click)="open(content1)"  class="btn btn-light"><i class="material-icons">&#xE147;</i> <span>Nouveau Candidat</span></a>
                              </div>
 
 
@@ -100,6 +100,7 @@
                         <td>{{liste?.comm?.code}}</td>
 
                        <td> <a  [routerLink]="" (click)="open1(content2,liste)"  class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                        <a  [routerLink]="" (click)="open2(content3,liste)"  class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                        </td>
                       </tr>
 
@@ -234,4 +235,21 @@
   <div class="modal-footer">
     <button type="button" class="btn btn-warning center" (click)="edit_list_electoral()+modal2.close('Save click')">Modifier</button>
   </div>
+</ng-template>
+
+
+<ng-template #content3 let-modal2>
+
+  <div class="modal-content">
+
+
+      <h4 class="modal-title">Are you sure?</h4>
+
+
+   <div class="modal-footer justify-content-center">
+        <button  (click)="modal2.close('Save click')" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button  (click)="supprimer()+ modal2.close('Save click');" type="button" class="btn btn-danger">Delete</button>
+    </div>
+
+</div>
 </ng-template>

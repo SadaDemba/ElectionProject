@@ -61,7 +61,7 @@
                               <input     type="text" class="form-control" placeholder="Recherche Par Code&hellip;">
                              </div>
                              <div class="col-sm-7 bd-highlight">
-                              <a [routerLink]="" (click)="open1(content)"  class="btn btn-secondary"><i class="material-icons">&#xE147;</i> <span>Nouvelle Annee</span></a>
+                              <a [routerLink]="" (click)="open1(content)"  class="btn btn-light"><i class="material-icons">&#xE147;</i> <span>Nouvelle Annee</span></a>
                              </div>
 
 
@@ -77,10 +77,10 @@
                      <thead style="background-color: #034a79be;">
 
                       <tr>
-                        <th scope="col">Annee de Vote</th>
-                        <th scope="col">Code</th>
-                        <th scope="col">Annee Encours</th>
-                        <th scope="col">Actions</th>
+                        <th scope="col" class="text-light">Annee de Vote</th>
+                        <th scope="col" class="text-light">Code</th>
+                        <th scope="col" class="text-light">Annee Encours</th>
+                        <th scope="col" class="text-light">Actions</th>
 
                       </tr>
                     </thead>
@@ -98,7 +98,8 @@
                         </td>
 
 
-                       <td> <a  [routerLink]=""   class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                       <td> <a  [routerLink]="" (click)="open(content1,annee)"   class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                        <a  [routerLink]="" (click)="open2(content2,annee)"   class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                        </td>
                       </tr>
 
@@ -122,6 +123,47 @@
   <!-- /.container -->
 </footer>
 
+
+
+
+<ng-template #content1 let-modal1>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Mis à jour de l'annee</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal1.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+ <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="pnom">Année de Cote</label>
+        <div >
+          <input [(ngModel)]="annee.libelle" id="libelle" class="form-control" placeholder="Année Scolaire..." name="nomannne" >
+        </div>
+        <label for="annee">Code</label>
+        <div>
+          <input [(ngModel)]="annee.code"  id="code" type="text" class="form-control" placeholder="Date" name="prenom" >
+        </div>
+
+        <label for="sexe">En cours:Non</label>
+        <div class="form-check">
+          <input id="checkbox" type="checkbox" name="encours" [(ngModel)]="annee.encours">
+          <label class="form-check-label" for="flexCheckDefault">
+            Valider son choix
+          </label>
+        </div>
+
+
+
+
+
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="edit_Annee()+modal1.close('Save click')">Modifier</button>
+  </div>
+</ng-template>
 
 
 
@@ -161,5 +203,23 @@
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-dark" (click)=" Ajouter()+modal.close('Save click')">Save</button>
+  </div>
+</ng-template>
+
+
+
+<ng-template #content2 let-modal2>
+
+    <div class="modal-content">
+
+
+        <h4 class="modal-title  center">Are you sure?</h4>
+
+
+     <div class="modal-footer justify-content-center">
+          <button  (click)="modal2.close('Save click')" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button  (click)="delete_Annee() + modal2.close('Save click');" type="button" class="btn btn-danger">Delete</button>
+      </div>
+
   </div>
 </ng-template>

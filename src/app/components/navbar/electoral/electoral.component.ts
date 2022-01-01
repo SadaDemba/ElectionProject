@@ -50,6 +50,9 @@ successmsg1(){
   this.toastr.success("Modification liste effectuer avec succès",'Success')
 }
 
+successmsg2(){
+  this.toastr.success("Modification liste effectuer avec succès",'Success')
+}
 
 /* file upload */
      /* Variabe to store file data */
@@ -116,10 +119,24 @@ edit_list_electoral()
 }
 
 
+open2(content:any,liste:ListElectoral) {
+  this.liste = liste;
+  this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    this.closeResult = `Closed with: ${result}`;
 
+  }, (reason) => {
+    this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+  });
+}
 
-
-
+supprimer()
+{
+  this.service.delete_candidat(this.liste.id).subscribe((data:{})=>{
+    console.log(data);
+    this.successmsg2();
+    this.ngOnInit();
+  })
+}
 
 
 

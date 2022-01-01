@@ -38,4 +38,9 @@ export class ListelectoralService {
     return   this.http.put<ListElectoral>(this.url+'/candidats/'+id,param,this.httpOption);
   }
 
+  delete_candidat(id:number)
+  {
+    return this.http.delete<ListElectoral>(this.url+'/candidats/'+id,this.httpOption);
+  }
+
 }

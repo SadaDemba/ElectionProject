@@ -31,4 +31,16 @@ export class AnneeService {
   {
     return this.http.get<Annee[]>(this.url +'/annee/encours');
   }
+
+  Edit_Annee(id :any,param:Annee)
+  {
+    console.log("in getEdit : "+JSON.stringify(param));
+    return   this.http.put<Annee>(this.url+'/annees/'+id,param,this.httpOption);
+  }
+
+  delete_Annee(id:number){
+    return this.http.delete<Annee>(this.url+'/annees/'+id,this.httpOption);
+  }
+
+
 }
