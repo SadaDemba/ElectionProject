@@ -8,9 +8,9 @@ hr {
 }
 
 .linear-gradient {
-    background: linear-gradient(to right, rgb(56, 5, 173), white);
+    background: linear-gradient(to right, #698cb4fb ,#698cb4fb, rgba(255, 255, 255, 0.562));
   }
-  
+
 .textcolor {
     color: aliceblue;
     font-size: x-large;
@@ -42,23 +42,27 @@ hr {
 
 .globalcolor
 {
-    background: linear-gradient(rgb(19, 2, 59) 10%, rgb(135, 144, 197));
+    background: linear-gradient(#698cb4fb , #698cb4fb);
     height: fit-content;
 }
 .bar2
 {
-    background-color: rgb(38, 3, 119);
+  background-color: #698cb4fb;
 }
 .btnmg
 {
     margin-left: 10px;
     margin-right: 10px;
-    background: rgb(38, 3, 119);
+    background: #698cb4fb;
     height: 30px;
     width: 220px;
-    
+
 }
 .trigger-btn{
     display: inline-block;
     margin: 10px auto;
+}
+
+.horizontal{
+  flex: auto;
 }

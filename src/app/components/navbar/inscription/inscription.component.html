@@ -1,7 +1,7 @@
-
+<app-home></app-home>
 <body>
   <div class="signup-form">
-      <form action="/examples/actions/confirmation.php" method="post" class="form-horizontal">
+  <form action="/examples/actions/confirmation.php" method="post" class="form-horizontal">
       <div class="row">
         <div class="col-8 offset-4">
           <h2>S'inscrire</h2>
@@ -9,39 +9,69 @@
       </div>
         <label *ngIf="expression==0" class="col-form-label col-4">Région</label>
         <div *ngIf="expression==0" class="col-8">
-          <select  name="region"    class="form-control" id="region">
-            <option></option>
+          <select  [(ngModel)]="regionObj"  name="region"    class="form-control" id="region">
+            <option  *ngFor="let region of regions" [value]="region.id">{{region?.libelle}}</option>
           </select>
+          <p>{{regionObj}}</p>
         </div>
-        <label *ngIf="expression==1" class="col-form-label col-4">Commune</label>
+        <label *ngIf="expression==1" class="col-form-label col-4">Département</label>
         <div *ngIf="expression==1" class="col-8">
-          <select  name="commune"    class="form-control" id="commune">
-            <option></option>
+          <select [(ngModel)]="communeObj"  name="commune"    class="form-control" id="commune">
+            <option *ngFor="let commune of communes" [value]="commune.id">{{commune?.libelle}}</option>
           </select>
+          <p>{{communeObj}}</p>
         </div>
-        <label *ngIf="expression==2" class="col-form-label col-4">Centre</label>
+        <label *ngIf="expression==2" class="col-form-label col-4">Arrondisssement</label>
         <div *ngIf="expression==2" class="col-8">
-          <select  name="commune"    class="form-control" id="commune">
-            <option></option>
+          <select [(ngModel)]="commObjet" name="centre"    class="form-control" id="centre">
+            <option *ngFor="let centre of centres" [value]="centre.id">{{centre?.libelle}}</option>
           </select>
+          <p>{{commObjet}}</p>
+        </div>
+        <label *ngIf="expression==3" class="col-form-label col-4">Communes</label>
+        <div *ngIf="expression==3" class="col-8">
+          <select [(ngModel)]="electeur.comm_id" name="comm"    class="form-control" id="comm">
+            <option *ngFor="let comm of comms" [value]="comm.id">{{comm?.libelle}}</option>
+          </select>
+          <p>{{electeur.comm_id}}</p>
+        </div>
+        <label *ngIf="expression==3" class="col-form-label col-4">Prénom</label>
+        <div *ngIf="expression==3" class="col-8">
+         <input [(ngModel)]="electeur.prenom" type="text" class="form-control" id="prenom" name="prenom">
+        </div>
+        <label *ngIf="expression==3" class="col-form-label col-4">Nom</label>
+        <div *ngIf="expression==3" class="col-8">
+        <input [(ngModel)]="electeur.nom" type="text" class="form-control" id="nom" name="nom">
+        </div>
+        <label *ngIf="expression==3" class="col-form-label col-4">Date de Naissance</label>
+        <div *ngIf="expression==3" class="col-8">
+        <input [(ngModel)]="electeur.datenaissance" placeholder="01/01/2000" type="text" class="form-control" id="datenaissance"  name="datenaissance" >
+        </div>
+        <label *ngIf="expression==3" class="col-form-label col-4">Numéro Electeur</label>
+        <div *ngIf="expression==3" class="col-8">
+        <input [(ngModel)]="electeur.cni" type="text" class="form-control" id="cni"  name="cni" >
+        </div>
+        <label *ngIf="expression==3" class="col-form-label col-4">Adresse</label>
+        <div *ngIf="expression==3" class="col-8">
+        <input [(ngModel)]="electeur.adresse" type="text" class="form-control" id="adresse"  name="adresse">
         </div>
 
       <div class="form-group row">
-        <div class="col-8 offset-4">
-
+        <div *ngIf="expression!=3" class="col-8 offset-4">
           <button type="button" (click)="disponible()"class="btn btn-primary btn-lg">Suivant</button>
         </div>
+          <button *ngIf="expression==3" (click)="AddElecteur()" class="btn btn-info btn-lg">Enregistre</button>
       </div>
       </form>
-    <div class="text-center">Je me suis déja inscrit  <a href="#">Quitter</a></div>
+    <div class="text-center">Je me suis dèja inscrit<a href="#">Quitter</a></div>
   </div>
   </body>
 
 
 
-<footer class="py-5  " style="background-color: #b7ddf8; color: darkslategrey;">
+<footer class="py-5  "  style="background-color: #698cb4fb;" >
   <div class="container">
-    <p class="m-0 text-center text-white">Universite Thiès &copy;  Hebergement des Etudiants</p>
+    <p class="m-0 text-center text-white">Sénégal &copy; Elections Legislatives</p>
   </div>
   <!-- /.container -->
 </footer>

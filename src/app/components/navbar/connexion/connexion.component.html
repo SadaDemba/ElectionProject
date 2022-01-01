@@ -1,1 +1,33 @@
-<p>connexion works!</p>
+<app-home></app-home>
+<div class="login">
+
+  <h2 class="login-header">Connexion</h2>
+
+  <form  class="login-container"  action="/examples/actions/confirmation.php" method="post" >
+    <p >
+      <input class="is-invalide" [(ngModel)]="login" type="email" name="login" placeholder="Email"  required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\-[a-z]{2,4}$" >
+    </p>
+    {{login}}
+    <div >
+      <div >Email </div>
+    </div>
+    <p>
+      <input type="password" [(ngModel)]="mdp" name="mdp" placeholder="Password"   required>
+    </p>
+    {{mdp}}
+    <div >
+      <div>Mot de passe</div>
+    </div>
+    <p>
+
+      <button class="btn btn-primary" type="submit" (click)="verifier()" >Connexion</button>
+    </p>
+  </form>
+</div>
+
+<footer class="py-5  "  style="background-color: #698cb4fb;">
+  <div class="container">
+    <p class="m-0 text-center text-white">Sénégal &copy; Elections Legislatives</p>
+  </div>
+  <!-- /.container -->
+</footer>
