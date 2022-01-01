@@ -11,8 +11,10 @@ import { InscriptionComponent } from './components/navbar/inscription/inscriptio
 import { VoterComponent } from './components/navbar/voter/voter.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { CarteComponent } from './components/navbar/carte/carte.component';
+import { AddAdminComponent } from './components/navbar/add-admin/add-admin.component';
 
 const routes: Routes = [
+
   {path:'',component:CarteComponent},
   {path:'electoral',component:ElectoralComponent},
   {path:'connexion',component:ConnexionComponent},
@@ -22,6 +24,8 @@ const routes: Routes = [
   {path:'votecandidat/:cni',component:VotecandidatComponent},
   {path:'administrateur',component:AdministrateurComponent},
   {path:'carte',component:CarteComponent},
+  {path:'addAdmin',component:AddAdminComponent},
+  {path: '**', pathMatch: 'full',component: PageNotFoundComponent}
   // {path:'/',component:CarteComponent}
 
 ];

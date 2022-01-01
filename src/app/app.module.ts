@@ -18,6 +18,7 @@ import { AnneeComponent } from './components/navbar/annee/annee.component';
 import { ElectoralComponent } from './components/navbar/electoral/electoral.component';
 import { VotecandidatComponent } from './components/navbar/votecandidat/votecandidat.component';
 import { EditLieuVoteComponent } from './components/navbar/voter/changement-lieu-de-vote/edit-lieu-vote/edit-lieu-vote.component';
+import { AddAdminComponent } from './components/navbar/add-admin/add-admin.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +33,7 @@ import { EditLieuVoteComponent } from './components/navbar/voter/changement-lieu
     CarteComponent,
     VotecandidatComponent,
     EditLieuVoteComponent,
+    AddAdminComponent,
 
   ],
   imports: [
