@@ -34,6 +34,12 @@ successmsg(){
   this.toastr.success("Enregistrement effectuer avec succès",'Success')
 }
 
+successmsg1(){
+  this.toastr.warning("Modification Année effectuer avec succès",'Success')
+}
+successmsg2(){
+  this.toastr.warning("Supression Année effectuer avec succès",'Success')
+}
   getAnnee()
   {
     this.proccessing=true;
@@ -54,10 +60,45 @@ successmsg(){
 
   }
 
+  edit_Annee()
+  {
+    this.service.Edit_Annee(this.annee.id,this.annee).subscribe((data:{})=>{
+      console.log(data);
+      this.successmsg1();
+      this.ngOnInit();
+    })
+  }
 
+  open(content:any,annee:Annee) {
 
+    this.annee = annee;
+    console.log("Objet:"+JSON.stringify(this.annee));
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
 
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+  open2(content:any,annee:Annee) {
+    this.annee = annee;
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
 
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+delete_Annee()
+{
+  this.service.delete_Annee(this.annee.id).subscribe((data:{})=>{
+    console.log(data);
+    this.successmsg2();
+    this.ngOnInit();
+  })
+
+}
 
 
 

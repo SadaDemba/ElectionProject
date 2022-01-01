@@ -12,7 +12,7 @@ import { HttpHeaders } from '@angular/common/http';
   styleUrls: ['./electoral.component.css']
 })
 export class ElectoralComponent implements OnInit {
-  listelectoral:any=[];
+  listelectoral:any;
   closeResult = '';
   titre:any;
   proccessing=false;
@@ -46,6 +46,13 @@ successmsg(){
   this.toastr.success("Enregistrement effectuer avec succès",'Success')
 }
 
+successmsg1(){
+  this.toastr.success("Modification liste effectuer avec succès",'Success')
+}
+
+successmsg2(){
+  this.toastr.success("Modification liste effectuer avec succès",'Success')
+}
 
 /* file upload */
      /* Variabe to store file data */
@@ -103,13 +110,33 @@ successmsg(){
  }
 
 
+edit_list_electoral()
+{
+  this.service.Edit_Candidat(this.liste.id,this.liste).subscribe(data=>{
+    this.successmsg1();
+    this.ngOnInit();
+})
+}
 
 
+open2(content:any,liste:ListElectoral) {
+  this.liste = liste;
+  this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    this.closeResult = `Closed with: ${result}`;
 
+  }, (reason) => {
+    this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+  });
+}
 
-
-
-
+supprimer()
+{
+  this.service.delete_candidat(this.liste.id).subscribe((data:{})=>{
+    console.log(data);
+    this.successmsg2();
+    this.ngOnInit();
+  })
+}
 
 
 

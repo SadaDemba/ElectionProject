@@ -29,3 +29,6 @@
 .nouveautes {
   float: right;
 }
+table.table td a.edit {
+  color: #FFC107;
+}
