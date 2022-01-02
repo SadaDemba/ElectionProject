@@ -28,6 +28,7 @@ export class AddAdminComponent implements OnInit {
   {
     this.service.createAdministrateur(this.administrateur).subscribe((data:{})=>{
       this.successmsg();
+      this.ngOnInit();
     })
   }
 
