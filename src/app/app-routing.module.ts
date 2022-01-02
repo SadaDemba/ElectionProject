@@ -1,3 +1,4 @@
+import { AddAdminComponent } from './components/navbar/add-admin/add-admin.component';
 import { VotecandidatComponent } from './components/navbar/votecandidat/votecandidat.component';
 import { ElectoralComponent } from './components/navbar/electoral/electoral.component';
 import { AnneeComponent } from './components/navbar/annee/annee.component';
@@ -9,12 +10,9 @@ import { ConnexionComponent } from './components/navbar/connexion/connexion.comp
 import { HeaderComponent } from './components/navbar/header/header.component';
 import { InscriptionComponent } from './components/navbar/inscription/inscription.component';
 import { VoterComponent } from './components/navbar/voter/voter.component';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { CarteComponent } from './components/navbar/carte/carte.component';
-import { AddAdminComponent } from './components/navbar/add-admin/add-admin.component';
 
 const routes: Routes = [
-
   {path:'',component:CarteComponent},
   {path:'electoral',component:ElectoralComponent},
   {path:'connexion',component:ConnexionComponent},
@@ -25,7 +23,6 @@ const routes: Routes = [
   {path:'administrateur',component:AdministrateurComponent},
   {path:'carte',component:CarteComponent},
   {path:'addAdmin',component:AddAdminComponent},
-  {path: '**', pathMatch: 'full',component: PageNotFoundComponent}
   // {path:'/',component:CarteComponent}
 
 ];

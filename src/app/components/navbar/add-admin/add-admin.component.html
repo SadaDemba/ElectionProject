@@ -4,9 +4,9 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-  
+
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-  
+
         <li class="nav-item active">
           <a class="nav-link" style="color: rgb(243, 249, 250);" href="/electoral">Liste électoral</a>
         </li>
@@ -20,14 +20,14 @@
           <a href="/addAdmin" style="color: rgb(243, 249, 250);" class="trigger-btn nav-link fa-pull-right" data-toggle="modal">Créer Administrateur</a>
         </li>
       </ul>
-  
+
         <ul class="nav navbar-nav pull-right ">
-  
+
           <li class="nav-item pull-right ">
             <a href="" class="trigger-btn nav-link pull-right " style="color: rgb(243, 249, 250);" data-toggle="modal">Se deconnecter</a>
           </li>
         </ul>
-  
+
     </div>
   </nav>
   <br>
@@ -41,19 +41,19 @@
         <div >Email </div>
       </div>
     <p >
-      <input class="is-invalide" [(ngModel)]="login" type="email" name="login" placeholder="Email"  required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\-[a-z]{2,4}$" >
+      <input class="is-invalide" [(ngModel)]="administrateur.email" type="email" name="login" placeholder="Email"  required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\-[a-z]{2,4}$" >
     </p>
-    {{login}}
+
     <div >
         <div>Mot de passe</div>
       </div>
     <p>
-      <input type="password" [(ngModel)]="mdp" name="mdp" placeholder="Password"   required>
+      <input type="password" [(ngModel)]="administrateur.mdp" name="mdp" placeholder="Password"   required>
     </p>
-    {{mdp}}
+
     <p>
 
-      <button class="btn btn-primary" type="submit" (click)="verifier()" >Connexion</button>
+      <button class="btn btn-primary" type="submit" (click)="ajouter()" >Créer</button>
     </p>
   </form>
 </div>

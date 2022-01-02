@@ -36,10 +36,6 @@ hr {
 
 }
 
-.horizontal{
-    display: flex;
-}
-
 .globalcolor
 {
     background: linear-gradient(#698cb4fb , #698cb4fb);

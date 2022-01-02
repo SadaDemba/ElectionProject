@@ -26,5 +26,10 @@ export class AdministrateurService {
       return   this.http.post<Administrateur>(this.url+'/administrateur/'+login+'/'+mdp,this.httpOption);
     }
 
+    createAdministrateur(param:any)
+    {
+      return   this.http.post<Administrateur>(this.url+'/administrateur',JSON.stringify(param),this.httpOption);
+    }
+
 
 }

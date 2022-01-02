@@ -1,3 +1,4 @@
+import { AddAdminComponent } from './components/navbar/add-admin/add-admin.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CarteComponent } from './components/navbar/carte/carte.component';
@@ -18,7 +19,6 @@ import { AnneeComponent } from './components/navbar/annee/annee.component';
 import { ElectoralComponent } from './components/navbar/electoral/electoral.component';
 import { VotecandidatComponent } from './components/navbar/votecandidat/votecandidat.component';
 import { EditLieuVoteComponent } from './components/navbar/voter/changement-lieu-de-vote/edit-lieu-vote/edit-lieu-vote.component';
-import { AddAdminComponent } from './components/navbar/add-admin/add-admin.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,8 +42,7 @@ import { AddAdminComponent } from './components/navbar/add-admin/add-admin.compo
     LeafletModule,
     HttpClientModule,
     FormsModule,
-    AppRoutingModule,
-     BrowserAnimationsModule,
+    AppRoutingModule, BrowserAnimationsModule,
     ToastrModule.forRoot()
   ],
   providers: [],
