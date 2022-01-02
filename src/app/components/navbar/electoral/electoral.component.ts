@@ -6,12 +6,13 @@ import { ListElectoral } from 'src/app/modele/listelectoral';
 import { ToastrService } from 'ngx-toastr';
 import { UploadFileModel } from 'src/app/shared/classes/upload-file-model';
 import { HttpHeaders } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-electoral',
   templateUrl: './electoral.component.html',
   styleUrls: ['./electoral.component.css']
 })
-export class ElectoralComponent implements OnInit {
+export class ElectoralComponent implements OnInit  {
   listelectoral:any;
   closeResult = '';
   titre:any;
@@ -30,13 +31,17 @@ export class ElectoralComponent implements OnInit {
     photo:'',
     comm:''
   }
+  login: any;
 
 
-  constructor(private service:ListelectoralService,private modalService: NgbModal,private communeservice:CommuneService,private toastr: ToastrService) { }
+  constructor(private route:ActivatedRoute,private service:ListelectoralService,private modalService: NgbModal,private communeservice:CommuneService,private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.listelectoral=this.getListe();
     this.communes=this.getCommunes();
+    this.login=this.route.snapshot.paramMap.get('login');
+    console.log("je suis le login"+this.login);
+
   }
 
   errorsmsg(){

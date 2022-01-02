@@ -1,7 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { Administrateur } from 'src/app/modele/administrateur';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AdministrateurService } from 'src/app/services/administrateur.service';
 @Component({
@@ -12,13 +12,14 @@ import { AdministrateurService } from 'src/app/services/administrateur.service';
 export class ConnexionComponent implements OnInit {
 
 
-  login!:'';
+  login:any;
   mdp!:'';
 
   veri:any=[];
   constructor(private service:AdministrateurService,private router: Router,private toastr: ToastrService) { }
 
   ngOnInit(): void {
+
   }
   errorsmsg(){
     this.toastr.error("Login ou mot de passe incorrecte ou vous n'etes pas administrateur",'Error')
@@ -37,6 +38,7 @@ successmsg(){
       }
       else
       {
+
         this.router.navigate(['/electoral']);
         this.successmsg();
       }

@@ -1,8 +1,10 @@
+import { AdministrateurService } from 'src/app/services/administrateur.service';
 import { AnneeService } from './../../../services/annee.service';
 import { Component, OnInit } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Annee } from 'src/app/modele/annee';
 import { ToastrService } from 'ngx-toastr';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-annee',
   templateUrl: './annee.component.html',
@@ -20,10 +22,14 @@ export class AnneeComponent implements OnInit {
     encours:this.encours
 }
 
-  constructor(private service:AnneeService,private modalService: NgbModal,private toastr: ToastrService) { }
+
+  constructor(private service:AnneeService,private modalService: NgbModal,private toastr: ToastrService,private adminis:AdministrateurService) { }
 
   ngOnInit(): void {
+    this.adminis.test==true;
+    console.log("Lamine"+this.adminis.test);
     this.getAnnee();
+
   }
 
 
