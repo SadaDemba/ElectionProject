@@ -1,3 +1,4 @@
+import { AddAdminComponent } from './components/navbar/add-admin/add-admin.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CarteComponent } from './components/navbar/carte/carte.component';
@@ -32,6 +33,7 @@ import { EditLieuVoteComponent } from './components/navbar/voter/changement-lieu
     CarteComponent,
     VotecandidatComponent,
     EditLieuVoteComponent,
+    AddAdminComponent,
 
   ],
   imports: [

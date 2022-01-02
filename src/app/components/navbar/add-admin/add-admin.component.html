@@ -1,0 +1,67 @@
+<nav class="navbar navbar-expand-lg navbar-light nav-pills nav-fill justify-content-between" style="background-color: #698cb4fb;" >
+    <img src="../../assets/1993r.jpg" style="width:100px;height:50px;" alt="">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+
+        <li class="nav-item active">
+          <a class="nav-link" style="color: rgb(243, 249, 250);" href="/electoral">Liste électoral</a>
+        </li>
+        <li class="nav-item">
+          <a href="" style="color: rgb(243, 249, 250);" class="trigger-btn nav-link fa-pull-right" data-toggle="modal">Statistique</a>
+        </li>
+        <li class="nav-item">
+          <a href="/annee" style="color: rgb(243, 249, 250);" class="trigger-btn nav-link fa-pull-right" data-toggle="modal">Années</a>
+        </li>
+        <li class="nav-item">
+          <a href="/addAdmin" style="color: rgb(243, 249, 250);" class="trigger-btn nav-link fa-pull-right" data-toggle="modal">Créer Administrateur</a>
+        </li>
+      </ul>
+
+        <ul class="nav navbar-nav pull-right ">
+
+          <li class="nav-item pull-right ">
+            <a href="" class="trigger-btn nav-link pull-right " style="color: rgb(243, 249, 250);" data-toggle="modal">Se deconnecter</a>
+          </li>
+        </ul>
+
+    </div>
+  </nav>
+  <br>
+
+<div class="login">
+
+  <h2 class="login-header">Ajout administrateur</h2>
+
+  <form  class="login-container"  action="/examples/actions/confirmation.php" method="post" >
+    <div >
+        <div >Email </div>
+      </div>
+    <p >
+      <input class="is-invalide" [(ngModel)]="administrateur.email" type="email" name="login" placeholder="Email"  required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\-[a-z]{2,4}$" >
+    </p>
+
+    <div >
+        <div>Mot de passe</div>
+      </div>
+    <p>
+      <input type="password" [(ngModel)]="administrateur.mdp" name="mdp" placeholder="Password"   required>
+    </p>
+
+    <p>
+
+      <button class="btn btn-primary" type="submit" (click)="ajouter()" >Créer</button>
+    </p>
+  </form>
+</div>
+
+<footer class="py-5  "  style="background-color: #698cb4fb;">
+  <div class="container">
+    <p class="m-0 text-center text-white">Sénégal &copy; Elections Legislatives</p>
+  </div>
+  <!-- /.container -->
+</footer>
+
