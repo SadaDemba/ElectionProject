@@ -26,8 +26,7 @@ export class AnneeComponent implements OnInit {
   constructor(private service:AnneeService,private modalService: NgbModal,private toastr: ToastrService,private adminis:AdministrateurService) { }
 
   ngOnInit(): void {
-    this.adminis.test==true;
-    console.log("Lamine"+this.adminis.test);
+    
     this.getAnnee();
 
   }

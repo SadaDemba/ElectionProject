@@ -9,28 +9,20 @@ import { Observable } from 'rxjs';
 export class AdministrateurService {
 
   private url= 'http://127.0.0.1:8000/api';
-
+ 
   httpOption={
     headers:new HttpHeaders({
       'Content-Type':'Application/json',
     }),
   };
-test!:boolean;
+
   constructor(private http:HttpClient) {
 
   }
-
+    
     authentification(login:String,mdp:String)
     {
-      if(login=="ziza97tiv@gmail.com")
-      {
-        this.test=true;
-      }
-      else
-      {
-        this.test=false;
-      }
-
+      localStorage.setItem('login',login.toString())
       return   this.http.post<Administrateur>(this.url+'/administrateur/'+login+'/'+mdp,this.httpOption);
     }
 

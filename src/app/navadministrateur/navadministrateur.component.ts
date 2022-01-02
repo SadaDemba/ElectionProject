@@ -7,14 +7,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navadministrateur.component.css']
 })
 export class NavadministrateurComponent implements OnInit {
-login:any;
+login:any=localStorage.getItem('login');
 variable!:boolean;
 
   constructor(private service:AdministrateurService) { }
 
   ngOnInit(): void {
-    this.variable=this.service.test;
-    console.log("aziz"+this.service.test);
+    this.test();
+    //console.log("aziz"+this.service.test);
+  }
+  test()
+  {
+    if(this.login=='ziza97tiv@gmail.com')
+    {
+      this.variable=true;
+      return;
+    }
+    this.variable=false;
   }
 
 
