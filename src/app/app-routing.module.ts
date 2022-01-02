@@ -1,3 +1,4 @@
+import { StatistiquesComponent } from './components/navbar/statistiques/statistiques.component';
 import { AddAdminComponent } from './components/navbar/add-admin/add-admin.component';
 import { VotecandidatComponent } from './components/navbar/votecandidat/votecandidat.component';
 import { ElectoralComponent } from './components/navbar/electoral/electoral.component';
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path:'administrateur',component:AdministrateurComponent},
   {path:'carte',component:CarteComponent},
   {path:'addAdmin',component:AddAdminComponent},
+  {path:'statistique',component:StatistiquesComponent},
   // {path:'/',component:CarteComponent}
 
 ];

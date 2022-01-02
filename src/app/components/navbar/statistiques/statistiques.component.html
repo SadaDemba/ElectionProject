@@ -1,0 +1,58 @@
+<app-navadministrateur></app-navadministrateur>
+<br>
+
+<section class="intro">
+  <div class="bg-image h-100" style="background-color: #f5f7fa;">
+    <div class="mask d-flex align-items-center h-100">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12">
+
+              <div class="card-body p-0">
+                <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true" style="position: relative; height: 700px">
+
+                  <div class="table-title">
+                    <div class="row">
+                        <div class="col-sm-8 align-center" >
+                          <H4>Nombre de voix pour chaque commune</H4><br>
+                          <div class="d-flex justify-content-evenly">
+
+
+                          </div>
+
+                        </div>
+                        <div class="search-box col-sm-5">
+                          <input     type="text" class="form-control" placeholder="Recherche Par Commune&hellip;">
+                         </div>
+                    </div>
+
+                </div>
+
+                  <table class="table table-striped mb-0">
+                     <thead style="background-color: #034a79be;">
+
+                      <tr>
+                        <th scope="col" class="text-light center">Commune</th>
+                        <th scope="col" class="text-light center">Nom de liste</th>
+                        <th scope="col" class="text-light center">Nombre voix</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let item of voix" >
+                        <td>{{item.Commune}}</td>
+                        <td>{{item.NomListe}}</td>
+                        <td>{{item.total}}</td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
