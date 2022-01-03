@@ -21,6 +21,7 @@ import { VotecandidatComponent } from './components/navbar/votecandidat/votecand
 import { EditLieuVoteComponent } from './components/navbar/voter/changement-lieu-de-vote/edit-lieu-vote/edit-lieu-vote.component';
 import { NavadministrateurComponent } from './navadministrateur/navadministrateur.component';
 import { StatistiquesComponent } from './components/navbar/statistiques/statistiques.component';
+import { NgChartsModule } from'ng2-charts';  
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +39,6 @@ import { StatistiquesComponent } from './components/navbar/statistiques/statisti
     AddAdminComponent,
     NavadministrateurComponent,
     StatistiquesComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -47,6 +47,7 @@ import { StatistiquesComponent } from './components/navbar/statistiques/statisti
     HttpClientModule,
     FormsModule,
     AppRoutingModule, BrowserAnimationsModule,
+    NgChartsModule,
     ToastrModule.forRoot()
   ],
   providers: [],

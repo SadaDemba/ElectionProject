@@ -8,12 +8,24 @@ import { Component, OnInit } from '@angular/core';
 export class CarteComponent implements OnInit {
 nombre!:number;
 region:any;
+map = document.querySelector('#map');
+paths = this.map?.querySelectorAll('.map-image a');
+links = this.map?.querySelectorAll('.map-list a');
   constructor() {
-    var map = document.querySelector('#map');
-    var paths = map?.querySelectorAll('.map-image a');
-    var links = map?.querySelectorAll('.map-list a');
+    
+  }
 
+  ngOnInit(): void {
+    this.map = document.querySelector('#map');
+    this.paths = this.map?.querySelectorAll('.map-image a');
+    this.links = this.map?.querySelectorAll('.map-list a');
+    this.polyfill();
+    this.theListener();
+  }
 
+  polyfill()
+  {
+    
     if (window.NodeList && !NodeList.prototype.forEach) {
       NodeList.prototype.forEach = function (callback, thisArg) {
           thisArg = thisArg || window;
@@ -21,22 +33,58 @@ region:any;
               callback.call(thisArg, this[i], i, this);
           }
       };
+    }
   }
-
-    paths?.forEach(function(path)
+  
+  theListener()
+  {
+    this.paths?.forEach(function(path)
     {
       path.addEventListener('mouseenter', function(e)
       {
-        console.log("salam!");
+        var id:String=path.id;
+        document.querySelectorAll(".is-active").forEach(function(item)
+        {
+          item.classList.remove('is-active');
+        })
+        document.getElementById(id.toString())?.classList.add('is-active');
+        document.getElementById("list_"+id.toString())?.classList.add('is-active');
+        
       });
+      path.addEventListener('mouseleave',function(e)
+      {
+        var id:String=path.id;
+        document.querySelectorAll(".is-active").forEach(function(item)
+        {
+          item.classList.remove('is-active');
+        })
+      })
     });
+
+    this.links?.forEach(function(path)
+    {
+      path.addEventListener('mouseenter', function(e)
+      {
+        var id:String=path.id.replace('list_','');
+        document.querySelectorAll(".is-active").forEach(function(item)
+        {
+          item.classList.remove('is-active');
+        })
+        document.getElementById(id.toString())?.classList.add('is-active');
+        document.getElementById("list_"+id.toString())?.classList.add('is-active');
+        
+      });
+      path.addEventListener('mouseleave',function(e)
+      {
+        var id:String=path.id.replace('list_','');;
+        document.querySelectorAll(".is-active").forEach(function(item)
+        {
+          item.classList.remove('is-active');
+        })
+      })
+    });
+
   }
-
-  ngOnInit(): void {
-
-
-  }
-
   cliquer(region:string)
   {
     this.region=region;
@@ -48,4 +96,6 @@ region:any;
       this.nombre=0;
     }
   }
+
+  
 }

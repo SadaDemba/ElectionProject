@@ -13,6 +13,7 @@ import { InscriptionComponent } from './components/navbar/inscription/inscriptio
 import { VoterComponent } from './components/navbar/voter/voter.component';
 import { CarteComponent } from './components/navbar/carte/carte.component';
 
+
 const routes: Routes = [
   {path:'',component:CarteComponent},
   {path:'electoral',component:ElectoralComponent},
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path:'carte',component:CarteComponent},
   {path:'addAdmin',component:AddAdminComponent},
   {path:'statistique',component:StatistiquesComponent},
+
   // {path:'/',component:CarteComponent}
 
 ];
