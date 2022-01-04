@@ -11,6 +11,7 @@ region:any;
 map = document.querySelector('#map');
 paths = this.map?.querySelectorAll('.map-image a');
 links = this.map?.querySelectorAll('.map-list a');
+  clic: boolean=false;
   constructor() {
     
   }
@@ -87,6 +88,9 @@ links = this.map?.querySelectorAll('.map-list a');
   }
   cliquer(region:string)
   {
+    this.clic=true;
+    //Récuperer ici le nom de la région et faire la requete pour recuper le tableau de communes
+    //passer ce tableau à piechartComponent en utilisant un service 
     this.region=region;
     if(this.region=='Fatick')
     {

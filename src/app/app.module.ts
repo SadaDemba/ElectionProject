@@ -21,7 +21,8 @@ import { VotecandidatComponent } from './components/navbar/votecandidat/votecand
 import { EditLieuVoteComponent } from './components/navbar/voter/changement-lieu-de-vote/edit-lieu-vote/edit-lieu-vote.component';
 import { NavadministrateurComponent } from './navadministrateur/navadministrateur.component';
 import { StatistiquesComponent } from './components/navbar/statistiques/statistiques.component';
-import { NgChartsModule } from'ng2-charts';  
+import { NgApexchartsModule } from "ng-apexcharts";
+import { PieChartComponent } from './components/navbar/pie-chart/pie-chart.component';  
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,6 +40,7 @@ import { NgChartsModule } from'ng2-charts';
     AddAdminComponent,
     NavadministrateurComponent,
     StatistiquesComponent,
+    PieChartComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,8 +48,8 @@ import { NgChartsModule } from'ng2-charts';
     LeafletModule,
     HttpClientModule,
     FormsModule,
+    NgApexchartsModule,
     AppRoutingModule, BrowserAnimationsModule,
-    NgChartsModule,
     ToastrModule.forRoot()
   ],
   providers: [],

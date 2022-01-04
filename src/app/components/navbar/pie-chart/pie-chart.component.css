@@ -1,0 +1,16 @@
+#chart {
+    /* max-width: 380px; */
+    width: fit-content;
+    background-color: gray;
+    margin: 35px auto;
+    padding: 0;
+  }
+
+#Chart{
+    background-color: #698cb4fb;
+    margin: 50px ;
+    width:auto;
+}
+.btn{
+    border-radius: 20px;
+}
