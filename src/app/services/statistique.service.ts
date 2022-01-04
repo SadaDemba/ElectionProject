@@ -24,6 +24,9 @@ export class StatistiqueService {
     return this.http.get<Stat[]>(this.url +'/count');
   }
 
-
+  getcountStat(region:any):Observable<Stat[]>
+  {
+    return this.http.get<Stat[]>(this.url +'/countvr/'+region);
+  }
 
 }

@@ -1,3 +1,4 @@
+import { StatistiqueService } from './../../../services/statistique.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -12,8 +13,9 @@ map = document.querySelector('#map');
 paths = this.map?.querySelectorAll('.map-image a');
 links = this.map?.querySelectorAll('.map-list a');
   clic: boolean=false;
-  constructor() {
-    
+  valeur: any;
+  constructor(private service:StatistiqueService) {
+
   }
 
   ngOnInit(): void {
@@ -26,7 +28,7 @@ links = this.map?.querySelectorAll('.map-list a');
 
   polyfill()
   {
-    
+
     if (window.NodeList && !NodeList.prototype.forEach) {
       NodeList.prototype.forEach = function (callback, thisArg) {
           thisArg = thisArg || window;
@@ -36,7 +38,7 @@ links = this.map?.querySelectorAll('.map-list a');
       };
     }
   }
-  
+
   theListener()
   {
     this.paths?.forEach(function(path)
@@ -50,7 +52,7 @@ links = this.map?.querySelectorAll('.map-list a');
         })
         document.getElementById(id.toString())?.classList.add('is-active');
         document.getElementById("list_"+id.toString())?.classList.add('is-active');
-        
+
       });
       path.addEventListener('mouseleave',function(e)
       {
@@ -73,7 +75,7 @@ links = this.map?.querySelectorAll('.map-list a');
         })
         document.getElementById(id.toString())?.classList.add('is-active');
         document.getElementById("list_"+id.toString())?.classList.add('is-active');
-        
+
       });
       path.addEventListener('mouseleave',function(e)
       {
@@ -90,16 +92,22 @@ links = this.map?.querySelectorAll('.map-list a');
   {
     this.clic=true;
     //Récuperer ici le nom de la région et faire la requete pour recuper le tableau de communes
-    //passer ce tableau à piechartComponent en utilisant un service 
+    //passer ce tableau à piechartComponent en utilisant un service
     this.region=region;
-    if(this.region=='Fatick')
-    {
-      this.nombre=3;
-    }
-    else{
-      this.nombre=0;
-    }
+    // if(this.region=='Fatick')
+    // {
+    //   this.nombre=3;
+    // }
+    // else{
+    //   this.nombre=0;
+    // }
+      this.service.getcountStat(this.region).subscribe((data)=>{
+        this.valeur=data;
+        this.nombre=this.valeur[0].total;
+        console.log("je suis le nombre de votant"+JSON.stringify(this.valeur[0].total));
+      })
+
   }
 
-  
+
 }
