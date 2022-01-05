@@ -1,6 +1,7 @@
 import { Component,ViewChild, OnInit } from '@angular/core';
 import { ApexAxisChartSeries, ChartComponent } from "ng-apexcharts";
 import { ApexNonAxisChartSeries, ApexResponsive, ApexChart} from "ng-apexcharts";
+import { StatistiqueService } from 'src/app/services/statistique.service';
 
 export type ChartOptions = {
   series: any;//ApexNonAxisChartSeries;
@@ -18,18 +19,22 @@ export class PieChartComponent implements OnInit {
   @ViewChild("chart")
   chart!: ChartComponent;
   public chartOptions: Partial<ChartOptions>;
+  tabDeNoms:string[]=[];
+  tabDeVotes:number[]=[]
   
-  constructor() 
+  constructor(private service:StatistiqueService) 
   {
+    this.tabDeNoms=this.service.tabDeNoms;
+    this.tabDeVotes=this.service.tabDeVotes;
 
 
     this.chartOptions = {
-      series: [44, 55, 13, 43, 22],
+      series: this.tabDeVotes,
       chart: {
         width: 500,
         type: "pie"
       },
-      labels: ["Team A", "Team B", "Team C", "Team D", "Team E"],
+      labels: this.tabDeNoms,
       responsive: [
         {
           breakpoint: 480,
