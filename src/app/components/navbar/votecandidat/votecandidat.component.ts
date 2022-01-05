@@ -18,6 +18,7 @@ import { RegionService } from 'src/app/services/region.service';
 })
 export class VotecandidatComponent implements OnInit {
   var:any;
+  imageDirectoyPath:any ="C:/xamp/htdocs/livecoding/storage/app/profils/61bca4e238f3f.png";
   closeResult = '';
   communes:any=[];
   cni:any;
@@ -70,14 +71,12 @@ export class VotecandidatComponent implements OnInit {
     this.serv.getcandidats(this.cni).subscribe(data=>{
       this.candidats=data;
       this.vote.listeelectoral_id=this.candidats.id;
-      console.log(this.candidats);
+
     });
 
     this.anneeservice.AnneeEncours().subscribe(data=>{
-      this.annee=JSON.stringify(data);
-      this.vote.annee_id=this.annee[7];
-
-      console.log( "je suis l'annee "+this.annee[7]);
+      this.annee=data;
+      this.vote.annee_id=this.annee[0].id;
     });
 
 
