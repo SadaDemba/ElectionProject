@@ -2,6 +2,7 @@ import { StatistiqueService } from './../../../services/statistique.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Commune } from 'src/app/modele/commune';
 
 @Component({
   selector: 'app-carte',
@@ -11,8 +12,11 @@ import { ToastrService } from 'ngx-toastr';
 export class CarteComponent implements OnInit {
 nombre!:number;
 region:any;
+nbInscrits:number=0;
+nbVotes:number=0;
 tabDeNoms:string[]=[];
 tabDeVotes:number[]=[];
+communesList:string[]=[];
 
 map = document.querySelector('#map');
 paths = this.map?.querySelectorAll('.map-image a');
@@ -100,38 +104,80 @@ links = this.map?.querySelectorAll('.map-list a');
     //Récuperer ici le nom de la région et faire la requete pour recuper le tableau de communes
     //passer ce tableau à piechartComponent en utilisant un service
     this.region=region;
-    // if(this.region=='Fatick')
-    // {
-    //   this.nombre=3;
-    // }
-    // else{
-    //   this.nombre=0;
-    // }
+    this.service.getcommunesByRegion(this.region).subscribe((data)=>{
+      this.communesList=[];
+      data.forEach(element => {
+        this.communesList.push(JSON.stringify(element.Libelle))
+      
+      });
+     // console.log("Les communes de "+this.region+": "+JSON.stringify(data))
+    })
+   
       this.service.getcountStat(this.region).subscribe((data)=>{
         this.valeur=data;
         this.nombre=this.valeur[0].total;
-        console.log("je suis le nombre de votant"+JSON.stringify(this.valeur));
-      })
+      });
+      this.service.getcountStatVotantInRegion(this.region).subscribe((data)=>{
+       if(data.length!=0)
+       {
+        this.nbVotes=data[0].total.valueOf()
+        console.log(JSON.stringify(this.nbVotes))
+       }
+      });
+      this.service.getcountStatInscritInRegion(this.region).subscribe((data)=>{
+        if(data.length!=0)
+        {
+          this.nbInscrits=data[0].total.valueOf()
+          console.log(JSON.stringify(this.nbInscrits))
+        }
+        
+       });
 
+      this.tabDeNoms=[];
+      this.tabDeVotes=[];
       this.service.getcountStatByCandidate(this.region).subscribe((data)=>{
         data.forEach(element => {
           this.tabDeNoms.push(JSON.stringify(element.NomListe))
           this.tabDeVotes.push(element.total.valueOf())
         });
-        console.log("les candidats:"+this.tabDeNoms+".\tLes votes"+this.tabDeVotes);
+        console.log(this.nbInscrits+" inscrits sur "+this.nbVotes+" votes")
+         this.tabDeNoms.push("Suffrage non exprimé")
+         this.tabDeVotes.push(this.nbInscrits-this.nbVotes)
+        
       })
 
   }
-  Visualiser()
+  Visualiser(n:number,commune:string)
   {
-    if(this.valeur[0].total!=0)
+    //Si on veut visualiser les résultats d'une commune, 
+    //faire ce qui est dans le premier if d'abord
+    if(n==2)
     {
+      if(commune="Gueule-Tapée-Fass-Colobane")
+        commune="GTFC"
+      this.service.getcountStatByCandidateInComm(commune).subscribe((data)=>{
+        data.forEach(element => {
+          console.log(element.NomListe+"-->"+element.total)
+          this.tabDeNoms=[];
+          this.tabDeVotes=[];
+          this.tabDeNoms.push(JSON.stringify(element.NomListe))
+          this.tabDeVotes.push(element.total.valueOf())
+          
+        });
+
+        //console.log("Resulat commune de "+commune+": "+JSON.stringify(data))
+      })
+      
+    }
+
+
+    this.service.getStat().subscribe((data)=>
+      {
+        console.log(this.tabDeNoms+" et "+this.tabDeVotes) 
       this.route.navigate(['/pieChart']);
       this.service.tabDeNoms=this.tabDeNoms;
       this.service.tabDeVotes=this.tabDeVotes;
-    }
-    else
-    this.toastr.error("Il n'y a rien a visualiser",'Erreur');
+      });
   }
 
 

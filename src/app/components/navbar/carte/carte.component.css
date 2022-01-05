@@ -37,3 +37,17 @@
   map{
       margin: 20px;
   }
+  .btn{
+      width: max-content;
+  }
+  .commList{
+    width: fit-content;
+    background-color: #698cb4fb;;
+    border-radius: 4%;
+    height:fit-content
+  }
+
+  .commList1{
+    width: fit-content;
+    height:fit-content;
+  }
