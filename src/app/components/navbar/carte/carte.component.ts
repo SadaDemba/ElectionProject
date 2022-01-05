@@ -1,5 +1,7 @@
 import { StatistiqueService } from './../../../services/statistique.service';
 import { Component, OnInit } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-carte',
@@ -9,12 +11,15 @@ import { Component, OnInit } from '@angular/core';
 export class CarteComponent implements OnInit {
 nombre!:number;
 region:any;
+tabDeNoms:string[]=[];
+tabDeVotes:number[]=[];
+
 map = document.querySelector('#map');
 paths = this.map?.querySelectorAll('.map-image a');
 links = this.map?.querySelectorAll('.map-list a');
   clic: boolean=false;
   valeur: any;
-  constructor(private service:StatistiqueService) {
+  constructor(private service:StatistiqueService, private route:Router,private toastr: ToastrService) {
 
   }
 
@@ -24,6 +29,7 @@ links = this.map?.querySelectorAll('.map-list a');
     this.links = this.map?.querySelectorAll('.map-list a');
     this.polyfill();
     this.theListener();
+    
   }
 
   polyfill()
@@ -104,9 +110,28 @@ links = this.map?.querySelectorAll('.map-list a');
       this.service.getcountStat(this.region).subscribe((data)=>{
         this.valeur=data;
         this.nombre=this.valeur[0].total;
-        console.log("je suis le nombre de votant"+JSON.stringify(this.valeur[0].total));
+        console.log("je suis le nombre de votant"+JSON.stringify(this.valeur));
       })
 
+      this.service.getcountStatByCandidate(this.region).subscribe((data)=>{
+        data.forEach(element => {
+          this.tabDeNoms.push(JSON.stringify(element.NomListe))
+          this.tabDeVotes.push(element.total.valueOf())
+        });
+        console.log("les candidats:"+this.tabDeNoms+".\tLes votes"+this.tabDeVotes);
+      })
+
+  }
+  Visualiser()
+  {
+    if(this.valeur[0].total!=0)
+    {
+      this.route.navigate(['/pieChart']);
+      this.service.tabDeNoms=this.tabDeNoms;
+      this.service.tabDeVotes=this.tabDeVotes;
+    }
+    else
+    this.toastr.error("Il n'y a rien a visualiser",'Erreur');
   }
 
 
