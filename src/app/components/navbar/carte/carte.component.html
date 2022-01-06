@@ -86,8 +86,8 @@
                             </thead>
                             <tbody>
                               <tr >
-                                <td>{{region}}</td>
-                                <td>{{nombre}}</td>
+                                <td><span *ngIf="!region" class="badge badge-danger">Indefinie</span> {{region}}</td>
+                                <td><span *ngIf="!nombre && nombre!=0" class="badge badge-danger">Indefinie</span> {{nombre}}</td>
                                 <!-- <td></td>
                                 <td></td>
                                 <td></td> -->
@@ -99,7 +99,7 @@
                           <div class="justify-content-center btn">
                             <button class="btn btn-primary" [hidden]="!clic" (click)="Visualiser(1,'')">Visualiser Résultats</button>
                           </div>
-                          <li class="text-light"><b><u>Liste des communes de la région</u></b></li>
+                          <li *ngIf="test==true" class="text-light"><b><u>Liste des communes de la région</u></b></li>
                           <div class="btn d-flex flex-column justify-content-center" *ngFor="let item of communesList">
                             <li>
                               <button class="btn " (click)="Visualiser(2,item)">{{item}}</button>

@@ -16,7 +16,8 @@ nbInscrits:number=0;
 nbVotes:number=0;
 tabDeNoms:string[]=[];
 tabDeVotes:number[]=[];
-communesList:string[]=[];
+communesList:string[]=[] ;
+test:boolean=false;
 
 map = document.querySelector('#map');
 paths = this.map?.querySelectorAll('.map-image a');
@@ -104,13 +105,15 @@ links = this.map?.querySelectorAll('.map-list a');
     //Récuperer ici le nom de la région et faire la requete pour recuper le tableau de communes
     //passer ce tableau à piechartComponent en utilisant un service
     this.region=region;
+    this.test=false;
     this.service.getcommunesByRegion(this.region).subscribe((data)=>{
+
       this.communesList=[];
       data.forEach(element => {
-        this.communesList.push(JSON.stringify(element.Libelle))
-
+        this.communesList.push(element.Libelle)
+        this.test=true;
+        console.log("chaleur "+this.test);
       });
-     // console.log("Les communes de "+this.region+": "+JSON.stringify(data))
     })
 
       this.service.getcountStat(this.region).subscribe((data)=>{
@@ -121,14 +124,13 @@ links = this.map?.querySelectorAll('.map-list a');
        if(data.length!=0)
        {
         this.nbVotes=data[0].total.valueOf()
-        console.log(JSON.stringify(this.nbVotes))
        }
       });
       this.service.getcountStatInscritInRegion(this.region).subscribe((data)=>{
         if(data.length!=0)
         {
           this.nbInscrits=data[0].total.valueOf()
-          console.log(JSON.stringify(this.nbInscrits))
+
         }
 
        });
@@ -140,7 +142,6 @@ links = this.map?.querySelectorAll('.map-list a');
           this.tabDeNoms.push(JSON.stringify(element.NomListe))
           this.tabDeVotes.push(element.total.valueOf())
         });
-        console.log(this.nbInscrits+" inscrits sur "+this.nbVotes+" votes")
          this.tabDeNoms.push("Suffrage non exprimé")
          this.tabDeVotes.push(this.nbInscrits-this.nbVotes)
 
@@ -153,22 +154,15 @@ links = this.map?.querySelectorAll('.map-list a');
     //faire ce qui est dans le premier if d'abord
     if(n==2)
     {
-      commune=commune.replace('"','');
-      commune=commune.replace('"','');
-      console.log("la commune "+commune)
+
       this.service.getcountStatByCandidateInComm(commune).subscribe((data)=>{
         this.tabDeNoms=[];
         this.tabDeVotes=[];
         data.forEach(element => {
-
-          console.log(element.NomListe+"-->"+element.total)
-
           this.tabDeNoms.push(JSON.stringify(element.NomListe))
           this.tabDeVotes.push(element.total.valueOf())
 
         });
-
-        //console.log("Resulat commune de "+commune+": "+JSON.stringify(data))
       })
 
     }
@@ -176,10 +170,10 @@ links = this.map?.querySelectorAll('.map-list a');
 
     this.service.getStat().subscribe((data)=>
       {
-        console.log(this.tabDeNoms+" et "+this.tabDeVotes)
-      this.route.navigate(['/pieChart']);
-      this.service.tabDeNoms=this.tabDeNoms;
-      this.service.tabDeVotes=this.tabDeVotes;
+
+        this.route.navigate(['/pieChart']);
+        this.service.tabDeNoms=this.tabDeNoms;
+        this.service.tabDeVotes=this.tabDeVotes;
       });
   }
 
