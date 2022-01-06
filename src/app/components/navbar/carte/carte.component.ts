@@ -153,8 +153,8 @@ links = this.map?.querySelectorAll('.map-list a');
     //faire ce qui est dans le premier if d'abord
     if(n==2)
     {
-      if(commune="Gueule-Tapée-Fass-Colobane")
-        commune="GTFC"
+       if(commune="Gueule-Tapée-Fass-Colobane")
+         commune="GTFC"
       this.service.getcountStatByCandidateInComm(commune).subscribe((data)=>{
         data.forEach(element => {
           console.log(element.NomListe+"-->"+element.total)
