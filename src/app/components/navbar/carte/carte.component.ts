@@ -33,7 +33,7 @@ links = this.map?.querySelectorAll('.map-list a');
     this.links = this.map?.querySelectorAll('.map-list a');
     this.polyfill();
     this.theListener();
-    
+
   }
 
   polyfill()
@@ -108,11 +108,11 @@ links = this.map?.querySelectorAll('.map-list a');
       this.communesList=[];
       data.forEach(element => {
         this.communesList.push(JSON.stringify(element.Libelle))
-      
+
       });
      // console.log("Les communes de "+this.region+": "+JSON.stringify(data))
     })
-   
+
       this.service.getcountStat(this.region).subscribe((data)=>{
         this.valeur=data;
         this.nombre=this.valeur[0].total;
@@ -130,7 +130,7 @@ links = this.map?.querySelectorAll('.map-list a');
           this.nbInscrits=data[0].total.valueOf()
           console.log(JSON.stringify(this.nbInscrits))
         }
-        
+
        });
 
       this.tabDeNoms=[];
@@ -143,37 +143,40 @@ links = this.map?.querySelectorAll('.map-list a');
         console.log(this.nbInscrits+" inscrits sur "+this.nbVotes+" votes")
          this.tabDeNoms.push("Suffrage non exprimé")
          this.tabDeVotes.push(this.nbInscrits-this.nbVotes)
-        
+
       })
 
   }
   Visualiser(n:number,commune:string)
   {
-    //Si on veut visualiser les résultats d'une commune, 
+    //Si on veut visualiser les résultats d'une commune,
     //faire ce qui est dans le premier if d'abord
     if(n==2)
     {
-       if(commune="Gueule-Tapée-Fass-Colobane")
-         commune="GTFC"
+      commune=commune.replace('"','');
+      commune=commune.replace('"','');
+      console.log("la commune "+commune)
       this.service.getcountStatByCandidateInComm(commune).subscribe((data)=>{
+        this.tabDeNoms=[];
+        this.tabDeVotes=[];
         data.forEach(element => {
+
           console.log(element.NomListe+"-->"+element.total)
-          this.tabDeNoms=[];
-          this.tabDeVotes=[];
+
           this.tabDeNoms.push(JSON.stringify(element.NomListe))
           this.tabDeVotes.push(element.total.valueOf())
-          
+
         });
 
         //console.log("Resulat commune de "+commune+": "+JSON.stringify(data))
       })
-      
+
     }
 
 
     this.service.getStat().subscribe((data)=>
       {
-        console.log(this.tabDeNoms+" et "+this.tabDeVotes) 
+        console.log(this.tabDeNoms+" et "+this.tabDeVotes)
       this.route.navigate(['/pieChart']);
       this.service.tabDeNoms=this.tabDeNoms;
       this.service.tabDeVotes=this.tabDeVotes;
