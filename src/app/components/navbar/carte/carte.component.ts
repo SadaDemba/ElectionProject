@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Commune } from 'src/app/modele/commune';
+import { Statcommune } from 'src/app/modele/statcommune';
 
 @Component({
   selector: 'app-carte',
@@ -12,6 +13,7 @@ import { Commune } from 'src/app/modele/commune';
 export class CarteComponent implements OnInit {
 nombre!:number;
 region:any;
+codeCommune:string="";
 nbInscrits:number=0;
 nbVotes:number=0;
 tabDeNoms:string[]=[];
@@ -97,8 +99,8 @@ links = this.map?.querySelectorAll('.map-list a');
         })
       })
     });
-
   }
+
   cliquer(region:string)
   {
     this.clic=true;
@@ -112,7 +114,6 @@ links = this.map?.querySelectorAll('.map-list a');
       data.forEach(element => {
         this.communesList.push(element.Libelle)
         this.test=true;
-        console.log("chaleur "+this.test);
       });
     })
 
@@ -154,27 +155,54 @@ links = this.map?.querySelectorAll('.map-list a');
     //faire ce qui est dans le premier if d'abord
     if(n==2)
     {
-
-      this.service.getcountStatByCandidateInComm(commune).subscribe((data)=>{
-        this.tabDeNoms=[];
-        this.tabDeVotes=[];
-        data.forEach(element => {
-          this.tabDeNoms.push(JSON.stringify(element.NomListe))
-          this.tabDeVotes.push(element.total.valueOf())
-
+      //remplacer le libelle de la commune par son code
+      this.service.getCodeCommuneByLibelle(commune).subscribe((data)=>
+      {
+        this.codeCommune=data[0].Code;
+        
+        console.log (this.codeCommune);
+        //Récuperer les resultats dans la commune indiqué en parametre
+        this.service.getcountStatByCandidateInComm(this.codeCommune).subscribe((data)=>{
+          //console.log (this.codeCommune);
+           console.log(JSON.stringify(data)+" ok aussi.")
+          this.tabDeNoms=[];
+          this.tabDeVotes=[];
+          data.forEach(element => {
+            
+            this.tabDeNoms.push(JSON.stringify(element.NomListe))
+            this.tabDeVotes.push(element.total.valueOf())
+  
+          });
+          //Renseigner le diagramme circulaire les données des résultats
+          this.service.getStat().subscribe((data)=>
+        {
+          console.log(this.tabDeNoms+" - "+this.tabDeVotes);
+          this.route.navigate(['/pieChart']);
+          this.service.tabDeNoms=this.tabDeNoms;
+          this.service.tabDeVotes=this.tabDeVotes;
         });
+          
+        })
+        console.log(this.tabDeNoms+" ---- "+this.tabDeVotes);
+       
+        
       })
 
+
+
     }
-
-
-    this.service.getStat().subscribe((data)=>
+    else{
+      this.service.getStat().subscribe((data)=>
       {
-
+        console.log(this.tabDeNoms+" - "+this.tabDeVotes);
         this.route.navigate(['/pieChart']);
         this.service.tabDeNoms=this.tabDeNoms;
         this.service.tabDeVotes=this.tabDeVotes;
       });
+    }
+
+
+    
   }
 
 
