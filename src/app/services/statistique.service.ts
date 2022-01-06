@@ -38,7 +38,7 @@ export class StatistiqueService implements CanActivate {
       return true;
     }
   }
- 
+
   getStat():Observable<Stat[]>
   {
     return this.http.get<Stat[]>(this.url +'/count');

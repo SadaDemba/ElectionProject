@@ -41,7 +41,7 @@
               <div  class="card h-50">
 
                 <div class="card-header"><h3 class="text-wrap" style="width: 20rem; height: 2rem " ><b> Candidat Numéro:</b><span class="badge badge-info">{{candidat?.id}}</span><div class="nouveautes"><input  class="form-check-input pull-right" type="checkbox" (click)="check({annee:candidat.id})" [value]="candidat.id" id="flexCheckDefault"></div> </h3><p></p> </div>
-                <img class="card-img-top img-fluid center" [src]="candidat?.photo" style="width:200px;height:200px;"  >
+                <img class="card-img-top img-fluid center" src="{{candidat?.photo}}" style="width:200px;height:200px;"  >
                 {{candidat?.photo}}
                 <h4 class="card-title fs-4" ><b class="fw-bold"> Nom de la Liste:</b>&nbsp;&nbsp;  {{candidat?.nom_liste}}</h4>
                 <h4 class="card-title fs-4"><b class="fw-bold"> Representant Prénom:</b>&nbsp;&nbsp; {{candidat?.representant_prenom}}</h4>
