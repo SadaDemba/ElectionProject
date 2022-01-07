@@ -143,9 +143,18 @@ links = this.map?.querySelectorAll('.map-list a');
           this.tabDeNoms.push(JSON.stringify(element.NomListe))
           this.tabDeVotes.push(element.total.valueOf())
         });
-         this.tabDeNoms.push("Suffrage non exprimé")
-         this.tabDeVotes.push(this.nbInscrits-this.nbVotes)
 
+        if(this.nbInscrits!=this.nbVotes)
+        {
+          this.tabDeNoms.push("Suffrage non exprimé")
+          this.tabDeVotes.push(this.nbInscrits-this.nbVotes)
+ 
+        }
+        if(this.tabDeNoms.length==0)
+        {
+          this.tabDeNoms.push("Pas d'inscrit dans cette localité");
+          this.tabDeVotes.push(100);
+        }
       })
 
   }
@@ -159,28 +168,54 @@ links = this.map?.querySelectorAll('.map-list a');
       this.service.getCodeCommuneByLibelle(commune).subscribe((data)=>
       {
         this.codeCommune=data[0].Code;
-        
-        console.log (this.codeCommune);
+  
         //Récuperer les resultats dans la commune indiqué en parametre
         this.service.getcountStatByCandidateInComm(this.codeCommune).subscribe((data)=>{
-          //console.log (this.codeCommune);
-           console.log(JSON.stringify(data)+" ok aussi.")
           this.tabDeNoms=[];
           this.tabDeVotes=[];
           data.forEach(element => {
-            
+            console.log(this.tabDeNoms+"aka"+this.codeCommune);
             this.tabDeNoms.push(JSON.stringify(element.NomListe))
             this.tabDeVotes.push(element.total.valueOf())
-  
+            console.log(this.tabDeNoms+"kessei");
           });
-          //Renseigner le diagramme circulaire les données des résultats
-          this.service.getStat().subscribe((data)=>
-        {
-          console.log(this.tabDeNoms+" - "+this.tabDeVotes);
-          this.route.navigate(['/pieChart']);
-          this.service.tabDeNoms=this.tabDeNoms;
-          this.service.tabDeVotes=this.tabDeVotes;
-        });
+          this.service.getcountStatInscritInCommune(this.codeCommune).subscribe((data)=>{
+            if(data.length!=0)
+              this.nbInscrits=data[0].total.valueOf();
+            else
+                this.nbInscrits=0
+            this.service.getcountStatVotantInCommune(this.codeCommune).subscribe((data)=>{
+              console.log("nb votes: "+this.nbVotes+"donnée: "+data)
+              if(data.length!=0)
+                this.nbVotes=data[0].total.valueOf();
+              else
+                this.nbVotes=0
+              console.log("nb votes: "+this.nbVotes)
+              if(this.nbInscrits!=this.nbVotes)
+              {
+                this.tabDeNoms.push("Suffrage non exprimé")
+                this.tabDeVotes.push(this.nbInscrits-this.nbVotes)
+       
+              }
+              if(this.tabDeNoms.length==0)
+              {
+                this.tabDeNoms.push("Pas d'inscrit dans cette localité");
+                this.tabDeVotes.push(100);
+              }
+              console.log(this.nbInscrits+"heeiii");
+              console.log(this.tabDeNoms+" -a- "+this.tabDeVotes);
+              //Renseigner le diagramme circulaire les données des résultats
+              this.service.getStat().subscribe((data)=>
+            {
+              //
+              this.route.navigate(['/pieChart']);
+              this.service.tabDeNoms=this.tabDeNoms;
+              this.service.tabDeVotes=this.tabDeVotes;
+            });
+            })
+            
+          })
+         
           
         })
         console.log(this.tabDeNoms+" ---- "+this.tabDeVotes);

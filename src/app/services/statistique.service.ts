@@ -77,12 +77,12 @@ export class StatistiqueService implements CanActivate {
 
   getcountStatVotantInCommune(commune:any):Observable<StatTotal[]>
   {
-    return this.http.get<StatTotal[]>(this.url +'/votant/region/'+commune);
+    return this.http.get<StatTotal[]>(this.url +'/votant/'+commune);
   }
 
   getcountStatInscritInCommune(commune:any):Observable<StatTotal[]>
   {
-    return this.http.get<StatTotal[]>(this.url +'/inscrit/region/'+commune);
+    return this.http.get<StatTotal[]>(this.url +'/inscrit/'+commune);
   }
 
   getCodeCommuneByLibelle(commune:any):Observable<Statcommune[]>
