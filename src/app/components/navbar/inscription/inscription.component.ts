@@ -4,6 +4,7 @@ import { Commune } from './../../../modele/commune';
 import { RegionService } from './../../../services/region.service';
 import { Component, OnInit } from '@angular/core';
 import { Region } from 'src/app/modele/region';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-inscription',
@@ -30,7 +31,7 @@ export class InscriptionComponent implements OnInit {
     libelle:'',
     code:'',
 }
-
+variable:any;
 electeur:Electeur={
   id:0,
   prenom:'',
@@ -44,12 +45,24 @@ electeur:Electeur={
 
 
 
-  constructor(private service:RegionService,private serv:ElecteurService) { }
+  constructor(private service:RegionService,private serv:ElecteurService,private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.expression=0;
     this.regions=this.getRegion();
   }
+
+
+  errorsmsg(){
+    this.toastr.error("Désolé vous etes dèja inscrit",'error');
+}
+successmsg(){
+  this.toastr.success("Inscription effectuer avec succes",'Success');
+}
+
+
+
+
 
   disponible()
   {
@@ -88,7 +101,19 @@ electeur:Electeur={
 
     this.serv.AjouterElecteur(this.electeur).subscribe((varr)=>{
     console.log(varr);
-      alert("Enregistrer avec Succes");
+    this.variable=varr;
+
+    if(this.variable===1)
+    {
+      this.errorsmsg();
+      this.ngOnInit();
+    }
+    else
+    {
+      this.successmsg();
+      this.ngOnInit();
+    }
+
     })
   }
 
