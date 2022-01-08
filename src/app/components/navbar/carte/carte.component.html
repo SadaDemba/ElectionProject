@@ -4,20 +4,20 @@
   <div class="map container" id="map">
     <div class="row">
     <div class="map-list d-flex flex-column min-vh-100 justify-content-center align-items-center col">
-      <li><a href=""   id="list_SN-DK" >Région de Dakar</a></li>
-      <li><a href=""   id="list_SN-DB" >Région de Diourbel</a></li>
-      <li><a href=""   id="list_SN-FK" >Région de Fatick</a></li>
-      <li><a href=""   id="list_SN-KE" >Région de Kédougou</a></li>
-      <li><a href=""   id="list_SN-KA" >Région de Kaffrine</a></li>
-      <li><a href=""   id="list_SN-KL" >Région de Kaolack</a></li>
-      <li><a href=""   id="list_SN-KD" >Région de Kolda</a></li>
-      <li><a href=""   id="list_SN-LG" >Région de Louga</a></li>
-      <li><a href=""   id="list_SN-MT" >Région de Matam</a></li>
-      <li><a href=""   id="list_SN-SE" >Région de Sédhiou</a></li>
-      <li><a href=""   id="list_SN-SL" >Région de Saint-Louis</a></li>
-      <li><a href=""   id="list_SN-TC" >Région de Tambacounda</a></li>
-      <li><a href=""   id="list_SN-TH" >Région de Thiès</a></li>
-      <li><a href=""   id="list_SN-ZG" >Région de Ziguinchor</a></li>
+      <li><a (click)="cliquer('Dakar')"    id="list_SN-DK" >Région de Dakar</a></li>
+      <li><a (click)="cliquer('Diourbel')"   id="list_SN-DB" >Région de Diourbel</a></li>
+      <li><a (click)="cliquer('Fatick')"   id="list_SN-FK" >Région de Fatick</a></li>
+      <li><a (click)="cliquer('Kédougou')"   id="list_SN-KE" >Région de Kédougou</a></li>
+      <li><a (click)="cliquer('Kafrine')"   id="list_SN-KA" >Région de Kaffrine</a></li>
+      <li><a (click)="cliquer('Kaolack')"   id="list_SN-KL" >Région de Kaolack</a></li>
+      <li><a (click)="cliquer('Kolda')"   id="list_SN-KD" >Région de Kolda</a></li>
+      <li><a (click)="cliquer('Louga')"   id="list_SN-LG" >Région de Louga</a></li>
+      <li><a (click)="cliquer('Matam')"   id="list_SN-MT" >Région de Matam</a></li>
+      <li><a (click)="cliquer('Sédhiou')"   id="list_SN-SE" >Région de Sédhiou</a></li>
+      <li><a (click)="cliquer('Saint-Louis')"   id="list_SN-SL" >Région de Saint-Louis</a></li>
+      <li><a (click)="cliquer('Tambacounda')"   id="list_SN-TC" >Région de Tambacounda</a></li>
+      <li><a (click)="cliquer('Thiès')"   id="list_SN-TH" >Région de Thiès</a></li>
+      <li><a (click)="cliquer('Ziguinchor')"   id="list_SN-ZG" >Région de Ziguinchor</a></li>
 
 
     </div>
@@ -76,8 +76,8 @@
                              <thead style="background-color: #034a79be;">
 
                               <tr>
-                                <th scope="col" class="text-light">Nom region</th>
-                                <th scope="col" class="text-light">nombre votants</th>
+                                <th scope="col" class="text-light">Région</th>
+                                <th scope="col" class="text-light">Votant(s)/Inscrit(s)</th>
                                 <!-- <th scope="col">Commune</th>
                                 <th scope="col">Premier</th>
                                 <th scope="col">deuxieme</th> -->
@@ -87,7 +87,7 @@
                             <tbody>
                               <tr >
                                 <td><span *ngIf="!region" class="badge badge-danger">Indefinie</span> {{region}}</td>
-                                <td><span *ngIf="!nombre && nombre!=0" class="badge badge-danger">Indefinie</span> {{nombre}}</td>
+                                <td> <span *ngIf="!clic" class="badge badge-danger">Indefinie</span><h5 *ngIf="clic">{{nombre}} sur {{nbInscrits}}</h5></td>
                                 <!-- <td></td>
                                 <td></td>
                                 <td></td> -->
