@@ -13,7 +13,8 @@ export class AddAdminComponent implements OnInit {
   administrateur:Administrateur={
     email: '',
     mdp: '',
-    id: 0
+    id: 0,
+    role: '',
   }
 
   constructor(private service:AdministrateurService,private toastr: ToastrService) { }
@@ -26,9 +27,12 @@ export class AddAdminComponent implements OnInit {
   }
   ajouter()
   {
-    this.service.createAdministrateur(this.administrateur).subscribe((data:{})=>{
-      this.successmsg();
-      this.ngOnInit();
+   this.service.createAdministrateur(this.administrateur).subscribe((data:{})=>{
+   this.successmsg();
+   this.administrateur.email='';
+   this.administrateur.mdp='';
+   this.administrateur.role='';
+
     })
   }
 

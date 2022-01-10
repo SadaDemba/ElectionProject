@@ -56,7 +56,7 @@ successmsg1(){
 }
 
 successmsg2(){
-  this.toastr.success("Modification liste effectuer avec succès",'Success')
+  this.toastr.success("suppresion liste effectuer avec succès",'Success')
 }
 
 /* file upload */

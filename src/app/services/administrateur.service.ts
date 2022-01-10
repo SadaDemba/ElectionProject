@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class AdministrateurService {
 
   private url= 'http://127.0.0.1:8000/api';
- 
+
   httpOption={
     headers:new HttpHeaders({
       'Content-Type':'Application/json',
@@ -19,7 +19,7 @@ export class AdministrateurService {
   constructor(private http:HttpClient) {
 
   }
-    
+
     authentification(login:String,mdp:String)
     {
       localStorage.setItem('login',login.toString())
@@ -31,5 +31,17 @@ export class AdministrateurService {
       return   this.http.post<Administrateur>(this.url+'/administrateur',JSON.stringify(param),this.httpOption);
     }
 
+    getAdministrateur():Observable<Administrateur[]>
+    {
+      return this.http.get<Administrateur[]>(this.url +'/administrateur');
+    }
+    getAdministrateurwithrole(email:any):Observable<Administrateur[]>
+    {
+      return this.http.get<Administrateur[]>(this.url +'/adminis/'+email);
+    }
 
+
+    delete_Administrateur(id:number){
+      return this.http.delete<Administrateur>(this.url+'/administrateur/'+id,this.httpOption);
+    }
 }

@@ -14,6 +14,7 @@ import { VoterComponent } from './components/navbar/voter/voter.component';
 import { CarteComponent } from './components/navbar/carte/carte.component';
 import { PieChartComponent } from './components/navbar/pie-chart/pie-chart.component';
 import { StatistiqueService } from './services/statistique.service';
+import { ListeAdminComponent } from './components/navbar/liste-admin/liste-admin.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,7 @@ const routes: Routes = [
   {path:'carte',component:CarteComponent},
   {path:'addAdmin',component:AddAdminComponent},
   {path:'statistique',component:StatistiquesComponent},
+  {path:'listAdmin',component:ListeAdminComponent},
   {path:'pieChart',component:PieChartComponent, canActivate: [StatistiqueService]}
 
   // {path:'/',component:CarteComponent}

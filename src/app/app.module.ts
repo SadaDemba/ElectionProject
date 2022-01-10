@@ -22,7 +22,8 @@ import { EditLieuVoteComponent } from './components/navbar/voter/changement-lieu
 import { NavadministrateurComponent } from './navadministrateur/navadministrateur.component';
 import { StatistiquesComponent } from './components/navbar/statistiques/statistiques.component';
 import { NgApexchartsModule } from "ng-apexcharts";
-import { PieChartComponent } from './components/navbar/pie-chart/pie-chart.component';  
+import { PieChartComponent } from './components/navbar/pie-chart/pie-chart.component';
+import { ListeAdminComponent } from './components/navbar/liste-admin/liste-admin.component';  
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +42,7 @@ import { PieChartComponent } from './components/navbar/pie-chart/pie-chart.compo
     NavadministrateurComponent,
     StatistiquesComponent,
     PieChartComponent,
+    ListeAdminComponent,
   ],
   imports: [
     BrowserModule,

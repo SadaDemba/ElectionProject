@@ -11,7 +11,7 @@
     <p >
       <input class="is-invalide" [(ngModel)]="administrateur.email" type="email" name="login" placeholder="Email"  required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\-[a-z]{2,4}$" >
     </p>
-    
+
 
     <div >
         <div>Mot de passe</div>
@@ -19,6 +19,17 @@
     <p>
       <input type="password" [(ngModel)]="administrateur.mdp" name="mdp" placeholder="Password"   required>
     </p>
+    <div >
+      <div>Role</div>
+    </div>
+    <div>
+      <p>
+        <select [(ngModel)]="administrateur.role" name="role"  class="form-control" id="exampleFormControlSelect1">
+          <option >Super Administrateur</option>
+          <option >Simple Administrateur</option>
+        </select>
+      </p>
+    </div>
 
     <p>
 
