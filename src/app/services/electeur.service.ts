@@ -28,4 +28,11 @@ export class ElecteurService {
 {
   return this.http.get<Electeur[]>(this.url +'/electeur/'+cni);
 }
+
+verfiercitoyens(cni:any)
+{
+  return this.http.get<Electeur[]>(this.url +'/citoyens/'+cni);
+}
+
+
 }

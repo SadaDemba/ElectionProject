@@ -49,7 +49,7 @@
                 <h4 class="card-title fs-4"><b class="fw-bold"> Date Naissance:</b>&nbsp;&nbsp; {{candidat?.representant_datenaissance}}</h4>
                 <h4 class="card-title fs-4"><b class="fw-bold"> Commune:</b>&nbsp;&nbsp; {{candidat?.comm?.libelle}}</h4>
                 <div class="pull-right">
-                  <button style="width:150px;height:50px;" (click)=" Addvote()"  class="button center ">Voter</button>
+                  <button *ngIf="ann ==true" style="width:150px;height:50px;" (click)=" Addvote()"  class="button center ">Voter</button>
                 </div>
               </div>
               </div>

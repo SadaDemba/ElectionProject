@@ -55,7 +55,7 @@ export class VotecandidatComponent implements OnInit {
     annee_id:0,
   }
 
-
+ann!:boolean;
 
   constructor(private route:ActivatedRoute,private servic:CommuneService,private router: Router,private service:ElecteurService,private serv:ListelectoralService,private voteservice:VoterService,private anneeservice: AnneeService,private toastr: ToastrService,private modalService: NgbModal) { }
 
@@ -77,6 +77,8 @@ export class VotecandidatComponent implements OnInit {
     this.anneeservice.AnneeEncours().subscribe(data=>{
       this.annee=data;
       this.vote.annee_id=this.annee[0].id;
+       this.ann=this.annee[0].encours;
+      console.log("lamine ba"+JSON.stringify(this.ann));
     });
 
 

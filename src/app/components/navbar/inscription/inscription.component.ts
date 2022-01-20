@@ -31,6 +31,9 @@ export class InscriptionComponent implements OnInit {
     libelle:'',
     code:'',
 }
+
+resultat:any;
+
 variable:any;
 electeur:Electeur={
   id:0,
@@ -56,6 +59,11 @@ electeur:Electeur={
   errorsmsg(){
     this.toastr.error("Désolé vous etes dèja inscrit",'error');
 }
+
+errorsmsg1(){
+  this.toastr.error("Désolé vous n'etes pas sur la liste des electeurs",'error');
+}
+
 successmsg(){
   this.toastr.success("Inscription effectuer avec succes",'Success');
 }
@@ -97,24 +105,38 @@ successmsg(){
 
   AddElecteur()
   {
-    console.log(this.electeur);
 
-    this.serv.AjouterElecteur(this.electeur).subscribe((varr)=>{
-    console.log(varr);
-    this.variable=varr;
+    this.serv.verfiercitoyens(this.electeur.cni).subscribe((varr)=>{
+      this.resultat=varr;
+      console.log( this.resultat);
+      if(this.resultat===1)
+      {
+        console.log(this.electeur);
 
-    if(this.variable===1)
-    {
-      this.errorsmsg();
-      this.ngOnInit();
-    }
-    else
-    {
-      this.successmsg();
-      this.ngOnInit();
-    }
+        this.serv.AjouterElecteur(this.electeur).subscribe((varr)=>{
+        console.log(varr);
+        this.variable=varr;
 
-    })
+        if(this.variable===1)
+        {
+          this.errorsmsg();
+          this.ngOnInit();
+        }
+        else
+        {
+          this.successmsg();
+          this.ngOnInit();
+        }
+
+        })
+
+      }
+      else
+        this.errorsmsg1();
+
+
+      })
+
   }
 
 }
