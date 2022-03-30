@@ -21,7 +21,7 @@ export class ConnexionComponent implements OnInit {
   ngOnInit(): void {
   }
   errorsmsg(){
-    this.toastr.error("Login ou mot de passe incorrecte ou vous n'etes pas administrateur",'Error')
+    this.toastr.error("Login ou mot de passe incorrecte ou vous n'êtes pas administrateur",'Error')
 }
 successmsg(){
   this.toastr.success("connexion réussie bienvenue",'Success')
@@ -37,7 +37,7 @@ successmsg(){
       }
       else
       {
-       
+
         this.router.navigate(['/electoral']);
         this.successmsg();
       }
