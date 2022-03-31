@@ -1,73 +1,78 @@
 <app-home></app-home>
+
 <body>
-  <div class="signup-form ">
-  <form action="/examples/actions/confirmation.php" method="post" class="form-horizontal">
-      <div class="row">
-        <div class="col-8 offset-4">
-          <h2>S'inscrire</h2>
-        </div>
-      </div>
-        <label *ngIf="expression==0" class="col-form-label col-6" style="color: rgb(3, 9, 10);">Région</label>
-        <div *ngIf="expression==0" class="col-8">
-          <select  [(ngModel)]="regionObj"  name="region"    class="form-control" id="region">
+    <div class="col-sm-12">
+
+
+        <div class="signup-form responsive">
+            <form action="/examples/actions/confirmation.php" method="post" class="form-horizontal">
+                <div class="row">
+                    <div class="col-8 offset-4">
+                        <h2>S'inscrire</h2>
+                    </div>
+                </div>
+                <label *ngIf="expression==0" class="col-form-label col-6" style="color: rgb(3, 9, 10);">Région</label>
+                <div *ngIf="expression==0" class="col-8">
+                    <select [(ngModel)]="regionObj" name="region" class="form-control" id="region">
             <option  *ngFor="let region of regions" [value]="region.id">{{region?.libelle}}</option>
           </select>
-        </div>
-        <label *ngIf="expression==1" class="col-form-label col-6" style="color: rgb(3, 9, 10);">Département</label>
-        <div *ngIf="expression==1" class="col-8">
-          <select [(ngModel)]="communeObj"  name="commune"    class="form-control" id="commune">
+                </div>
+                <label *ngIf="expression==1" class="col-form-label col-6" style="color: rgb(3, 9, 10);">Département</label>
+                <div *ngIf="expression==1" class="col-8">
+                    <select [(ngModel)]="communeObj" name="commune" class="form-control" id="commune">
             <option *ngFor="let commune of communes" [value]="commune.id">{{commune?.libelle}}</option>
           </select>
-        </div>
-        <label *ngIf="expression==2" class="col-form-label col-6" style="color: rgb(3, 9, 10);">Arrondisssement</label>
-        <div *ngIf="expression==2" class="col-8">
-          <select [(ngModel)]="commObjet" name="centre"    class="form-control" id="centre">
+                </div>
+                <label *ngIf="expression==2" class="col-form-label col-6" style="color: rgb(3, 9, 10);">Arrondisssement</label>
+                <div *ngIf="expression==2" class="col-8">
+                    <select [(ngModel)]="commObjet" name="centre" class="form-control" id="centre">
             <option *ngFor="let centre of centres" [value]="centre.id">{{centre?.libelle}}</option>
           </select>
-        </div>
-        <label *ngIf="expression==3" class="col-form-label col-6" style="color: rgb(3, 9, 10);">Communes</label>
-        <div *ngIf="expression==3" class="col-8">
-          <select [(ngModel)]="electeur.comm_id" name="comm"    class="form-control" id="comm">
+                </div>
+                <label *ngIf="expression==3" class="col-form-label col-6" style="color: rgb(3, 9, 10);">Communes</label>
+                <div *ngIf="expression==3" class="col-8">
+                    <select [(ngModel)]="electeur.comm_id" name="comm" class="form-control" id="comm">
             <option *ngFor="let comm of comms" [value]="comm.id">{{comm?.libelle}}</option>
           </select>
-        </div>
-        <label *ngIf="expression==3" class="col-form-label col-6" style="color: rgb(3, 9, 10);">Prénom</label>
-        <div *ngIf="expression==3" class="col-8">
-         <input [(ngModel)]="electeur.prenom" type="text" class="form-control" id="prenom" name="prenom">
-        </div>
-        <label *ngIf="expression==3" class="col-form-label col-6" style="color: rgb(3, 9, 10);">Nom</label>
-        <div *ngIf="expression==3" class="col-8">
-        <input [(ngModel)]="electeur.nom" type="text" class="form-control" id="nom" name="nom">
-        </div>
-        <label *ngIf="expression==3" class="col-form-label col-6" style="color: rgb(3, 9, 10);">Date de Naissance</label>
-        <div *ngIf="expression==3" class="col-8">
-        <input [(ngModel)]="electeur.datenaissance"  type="Date" class="form-control" id="datenaissance"  name="datenaissance" >
-        </div>
-        <label *ngIf="expression==3" class="col-form-label col-6" style="color: rgb(3, 9, 10);">Numéro Electeur</label>
-        <div *ngIf="expression==3" class="col-8">
-        <input [(ngModel)]="electeur.cni" type="text" class="form-control" id="cni"  name="cni" >
-        </div>
-        <label *ngIf="expression==3" class="col-form-label col-6" style="color: rgb(3, 9, 10);">Adresse</label>
-        <div *ngIf="expression==3" class="col-8">
-        <input [(ngModel)]="electeur.adresse" type="text" class="form-control" id="adresse"  name="adresse">
-        </div>
+                </div>
+                <label *ngIf="expression==3" class="col-form-label col-6" style="color: rgb(3, 9, 10);">Prénom</label>
+                <div *ngIf="expression==3" class="col-8">
+                    <input [(ngModel)]="electeur.prenom" type="text" class="form-control" id="prenom" name="prenom">
+                </div>
+                <label *ngIf="expression==3" class="col-form-label col-6" style="color: rgb(3, 9, 10);">Nom</label>
+                <div *ngIf="expression==3" class="col-8">
+                    <input [(ngModel)]="electeur.nom" type="text" class="form-control" id="nom" name="nom">
+                </div>
+                <label *ngIf="expression==3" class="col-form-label col-6" style="color: rgb(3, 9, 10);">Date de Naissance</label>
+                <div *ngIf="expression==3" class="col-8">
+                    <input [(ngModel)]="electeur.datenaissance" type="Date" class="form-control" id="datenaissance" name="datenaissance">
+                </div>
+                <label *ngIf="expression==3" class="col-form-label col-6" style="color: rgb(3, 9, 10);">Numéro Electeur</label>
+                <div *ngIf="expression==3" class="col-8">
+                    <input [(ngModel)]="electeur.cni" type="text" class="form-control" id="cni" name="cni">
+                </div>
+                <label *ngIf="expression==3" class="col-form-label col-6" style="color: rgb(3, 9, 10);">Adresse</label>
+                <div *ngIf="expression==3" class="col-8">
+                    <input [(ngModel)]="electeur.adresse" type="text" class="form-control" id="adresse" name="adresse">
+                </div>
 
-      <div class="form-group row">
-        <div *ngIf="expression!=3" class="col-8 offset-4">
-          <button type="button" (click)="disponible()"class="btn btn-primary btn-lg" style="color: rgb(243, 249, 250);">Suivant</button>
+                <div class="form-group row">
+                    <div *ngIf="expression!=3" class="col-8 offset-4">
+                        <button type="button" (click)="disponible()" class="btn btn-primary btn-lg" style="color: rgb(243, 249, 250);">Suivant</button>
+                    </div>
+                    <button *ngIf="expression==3" (click)="AddElecteur()" class="btn btn-info btn-lg" style="color: rgb(243, 249, 250);">Enregistre</button>
+                </div>
+            </form>
+
         </div>
-          <button *ngIf="expression==3" (click)="AddElecteur()" class="btn btn-info btn-lg" style="color: rgb(243, 249, 250);">Enregistre</button>
-      </div>
-      </form>
-
-  </div>
-  </body>
+    </div>
+</body>
 
 
 
-<footer class="py-5  "  style="background-color: #698cb4fb;" >
-  <div class="container">
-    <p class="m-0 text-center text-white">Sénégal &copy; Elections Legislatives</p>
-  </div>
-  <!-- /.container -->
+<footer class="py-5  " style="background-color: #698cb4fb;">
+    <div class="container">
+        <p class="m-0 text-center text-white">Sénégal &copy; Elections Legislatives</p>
+    </div>
+    <!-- /.container -->
 </footer>
