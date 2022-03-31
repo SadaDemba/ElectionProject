@@ -18,7 +18,7 @@ import { RegionService } from 'src/app/services/region.service';
 })
 export class VotecandidatComponent implements OnInit {
   var:any;
-  imageDirectoyPath:any ="C:/xamp/htdocs/livecoding/storage/app/profils/61bca4e238f3f.png";
+  //imageDirectorypath:any='http://127.0.0.1:8000/public/uploads/candidats/java.png'
   closeResult = '';
   communes:any=[];
   cni:any;
@@ -71,6 +71,7 @@ ann!:boolean;
     this.serv.getcandidats(this.cni).subscribe(data=>{
       this.candidats=data;
       this.vote.listeelectoral_id=this.candidats.id;
+      console.log("candiats:"+JSON.stringify( this.candidats));
 
     });
 

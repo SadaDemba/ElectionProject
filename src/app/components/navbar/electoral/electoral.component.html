@@ -8,217 +8,217 @@
 <div class="spinner-grow text-warning" *ngIf="proccessing"></div>
 <div class="spinner-grow text-danger" *ngIf="proccessing"></div>
 <div class="spinner-grow text-secondary" *ngIf="proccessing"></div>
-<div class="spinner-grow text-dark"*ngIf="proccessing"></div>
-<div class="spinner-grow text-light"*ngIf="proccessing"></div>
+<div class="spinner-grow text-dark" *ngIf="proccessing"></div>
+<div class="spinner-grow text-light" *ngIf="proccessing"></div>
 
 <section class="intro">
-  <div class="bg-image h-100" style="background-color: #f5f7fa;">
-    <div class="mask d-flex align-items-center h-100">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-12">
+    <div class="bg-image h-100" style="background-color: #f5f7fa;">
+        <div class="mask d-flex align-items-center h-100">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12">
 
-              <div class="card-body p-0">
-                <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true" style="position: relative; height: 700px">
+                        <div class="card-body p-0">
+                            <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true" style="position: relative; height: 700px">
 
-                  <div class="table-title">
-                    <div class="row">
-                        <div class="col-sm-5 align-center" >
-                          <H4>Liste des Candidats de chaque commune</H4><br>
-                          <div class="d-flex justify-content-evenly">
-                            <div class="search-box">
-                              <input   [(ngModel)]="titre" (ngModelChange)="serarcharticle()" type="text" class="form-control" placeholder="Recherche Par Prenom&hellip;">
-                             </div>
-                             <div class="col-sm-7 bd-highlight">
-                              <a [routerLink]="" (click)="open(content1)"  class="btn btn-light"><i class="material-icons">&#xE147;</i> <span>Nouveau Candidat</span></a>
-                             </div>
+                                <div class="table-title">
+                                    <div class="row">
+                                        <div class="col-sm-5 align-center">
+                                            <H4>Liste des Candidats de chaque commune</H4><br>
+                                            <div class="d-flex justify-content-evenly">
+                                                <div class="search-box">
+                                                    <input [(ngModel)]="titre" (ngModelChange)="serarcharticle()" type="text" class="form-control" placeholder="Recherche Par Prenom&hellip;">
+                                                </div>
+                                                <div class="col-sm-7 bd-highlight">
+                                                    <a [routerLink]="" (click)="open(content1)" class="btn btn-light"><i class="material-icons">&#xE147;</i> <span>Nouveau Candidat</span></a>
+                                                </div>
 
 
-                          </div>
+                                            </div>
 
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <table class="table table-striped mb-0">
+                                    <thead style="background-color: #034a79be;">
+
+                                        <tr>
+                                            <th scope="col" class="text-light">Nom liste</th>
+                                            <th scope="col" class="text-light">Code</th>
+                                            <th scope="col" class="text-light">Prénom</th>
+                                            <th scope="col" class="text-light">Nom</th>
+                                            <th scope="col" class="text-light">Date naissance</th>
+                                            <th scope="col" class="text-light">CNI</th>
+                                            <th scope="col" class="text-light">Adresse</th>
+                                            <th scope="col" class="text-light">Commune</th>
+                                            <th scope="col" class="text-light">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let liste of listelectoral">
+                                            <td>{{liste?.nom_liste}}</td>
+                                            <td>{{liste?.code}}</td>
+                                            <td>{{liste?.representant_prenom}}</td>
+                                            <td>{{liste?.representant_nom}}</td>
+                                            <td>{{liste?.representant_datenaissance}}</td>
+                                            <td>{{liste?.representant_cni}}</td>
+                                            <td>{{liste?.representant_adresse}}</td>
+                                            <td>{{liste?.comm?.code}}</td>
+
+                                            <td> <a [routerLink]="" (click)="open1(content2,liste)" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                                                <a [routerLink]="" (click)="open2(content3,liste)" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
 
                     </div>
-
                 </div>
-
-                  <table class="table table-striped mb-0">
-                     <thead style="background-color: #034a79be;">
-
-                      <tr>
-                        <th scope="col" class="text-light" >Nom liste</th>
-                        <th scope="col" class="text-light">Code</th>
-                        <th scope="col" class="text-light">Prénom</th>
-                        <th scope="col" class="text-light">Nom</th>
-                        <th scope="col" class="text-light">Date naissance</th>
-                        <th scope="col" class="text-light">CNI</th>
-                        <th scope="col" class="text-light">Adresse</th>
-                        <th scope="col" class="text-light">Commune</th>
-                        <th scope="col" class="text-light">Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let liste of listelectoral">
-                        <td>{{liste?.nom_liste}}</td>
-                        <td>{{liste?.code}}</td>
-                        <td>{{liste?.representant_prenom}}</td>
-                        <td>{{liste?.representant_nom}}</td>
-                        <td>{{liste?.representant_datenaissance}}</td>
-                        <td>{{liste?.representant_cni}}</td>
-                        <td>{{liste?.representant_adresse}}</td>
-                        <td>{{liste?.comm?.code}}</td>
-
-                       <td> <a  [routerLink]="" (click)="open1(content2,liste)"  class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                        <a  [routerLink]="" (click)="open2(content3,liste)"  class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-                       </td>
-                      </tr>
-
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
-          </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 
 </section>
-<footer class="py-5  "   style="background-color: #698cb4fb;" >
-  <div class="container">
-    <p class="m-0 text-center text-white">Sénégal &copy; Elections Legislatives</p>
-  </div>
-  <!-- /.container -->
+<footer class="py-5  " style="background-color: #698cb4fb;">
+    <div class="container">
+        <p class="m-0 text-center text-white">Sénégal &copy; Elections Legislatives</p>
+    </div>
+    <!-- /.container -->
 </footer>
 
 
 
-  <!-- /.Modal pour ajouter une nouvelle liste -->
+<!-- /.Modal pour ajouter une nouvelle liste -->
 <ng-template #content1 let-modal1>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Enregistrer Liste Electoral</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal1.dismiss('Cross click')">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Enregistrer Liste Electoral</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal1.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
-  </div>
- <div class="modal-body">
-    <form enctype="multipart/form-data" method="post">
-      <div class="form-group">
-        <label for="nom_liste"><b> Nom de la Liste</b></label>
-        <div >
-          <input [(ngModel)]="liste.nom_liste"  id="nom_liste" class="form-control" placeholder="Nom Liste" name="nom_liste" >
-        </div>
-        <label for="code"><b>Code</b></label>
-        <div >
-          <input [(ngModel)]="liste.code"   id="code" class="form-control" placeholder="Code" name="code" >
-        </div>
-        <label for="representant_prenom"><b>Prénom Representant</b></label>
-        <div >
-          <input [(ngModel)]="liste.representant_prenom" id="representant_prenom" class="form-control" placeholder="Prenom" name="representant_prenom" >
-        </div>
-        <label for="representant_nom"><b>Nom Representant</b></label>
-        <div >
-          <input [(ngModel)]="liste.representant_nom" id="representant_nom" class="form-control" placeholder="Nom" name="representant_nom" >
-        </div>
-        <label for="representant_datenaissance"><b>Date Naissance </b></label>
-        <div >
-          <input [(ngModel)]="liste.representant_datenaissance" id="representant_datenaissance" class="form-control" placeholder="Date Naissance" name="representant_datenaissance" >
-        </div>
-        <label for="representant_cni"><b>Numéro Electeur</b></label>
-        <div >
-          <input [(ngModel)]="liste.representant_cni"  id="representant_cni" class="form-control" placeholder="CNI" name="representant_cni" >
-        </div>
-        <label for="representant_adresse"><b>Adresse</b></label>
-        <div >
-          <input [(ngModel)]="liste.representant_adresse"  id="representant_adresse" class="form-control" placeholder="Adresse" name="representant_adresse" >
-        </div>
-        <label for="comm_id"><b>Commune</b></label>
-        <div>
-          <select [(ngModel)]="liste.comm_id" name="comm_id"  class="form-control" id="exampleFormControlSelect1">
+    </div>
+    <div class="modal-body">
+        <form enctype="multipart/form-data" method="post">
+            <div class="form-group">
+                <label for="nom_liste"><b> Nom de la Liste</b></label>
+                <div>
+                    <input [(ngModel)]="liste.nom_liste" id="nom_liste" class="form-control" placeholder="Nom Liste" name="nom_liste">
+                </div>
+                <label for="code"><b>Code</b></label>
+                <div>
+                    <input [(ngModel)]="liste.code" id="code" class="form-control" placeholder="Code" name="code">
+                </div>
+                <label for="representant_prenom"><b>Prénom Representant</b></label>
+                <div>
+                    <input [(ngModel)]="liste.representant_prenom" id="representant_prenom" class="form-control" placeholder="Prenom" name="representant_prenom">
+                </div>
+                <label for="representant_nom"><b>Nom Representant</b></label>
+                <div>
+                    <input [(ngModel)]="liste.representant_nom" id="representant_nom" class="form-control" placeholder="Nom" name="representant_nom">
+                </div>
+                <label for="representant_datenaissance"><b>Date Naissance </b></label>
+                <div>
+                    <input [(ngModel)]="liste.representant_datenaissance" id="representant_datenaissance" class="form-control" placeholder="Date Naissance" name="representant_datenaissance">
+                </div>
+                <label for="representant_cni"><b>Numéro Electeur</b></label>
+                <div>
+                    <input [(ngModel)]="liste.representant_cni" id="representant_cni" class="form-control" placeholder="CNI" name="representant_cni">
+                </div>
+                <label for="representant_adresse"><b>Adresse</b></label>
+                <div>
+                    <input [(ngModel)]="liste.representant_adresse" id="representant_adresse" class="form-control" placeholder="Adresse" name="representant_adresse">
+                </div>
+                <label for="comm_id"><b>Commune</b></label>
+                <div>
+                    <select [(ngModel)]="liste.comm_id" name="comm_id" class="form-control" id="exampleFormControlSelect1">
             <option *ngFor="let commune of communes" [value]="commune.id" >{{commune?.code}}</option>
           </select>
-        </div>
-        <div>
-          <input type="file" accept="image/*"  name="photo" (change)="fileEvent($event)"/>
-        </div>
+                </div>
+                <div>
+                    <input type="file" accept="image/*" name="photo" (change)="fileEvent($event)" id="photo" />
+                </div>
 
-      </div>
-    </form>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-success" (click)=" addliste()+modal1.close('Save click')">Ajouter</button>
-  </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-success" (click)=" addliste()+modal1.close('Save click')">Ajouter</button>
+    </div>
 </ng-template>
 
 
 <ng-template #content2 let-modal2>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Modifier Liste Electoral</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal2.dismiss('Cross click')">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Modifier Liste Electoral</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal2.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
-  </div>
- <div class="modal-body">
-    <form>
-      <div class="form-group">
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="form-group">
 
-        <label for="nom_liste">Nom de la Liste</label>
-        <div >
-          <input disabled="disabled" [(ngModel)]="liste.nom_liste" id="nom_liste" class="form-control" placeholder="nom liste" name="nom_liste" >
-        </div>
-        <label for="code">Code</label>
-        <div >
-          <input disabled="disabled" [(ngModel)]="liste.code"  id="code" class="form-control" placeholder="Code" name="code" >
-        </div>
-        <label for="representant_prenom">Prénom Representant</label>
-        <div >
-          <input [(ngModel)]="liste.representant_prenom"  id="representant_prenom" class="form-control" placeholder="Prenom" name="representant_prenom" >
-        </div>
-        <label for="representant_nom">Nom Representant</label>
-        <div >
-          <input [(ngModel)]="liste.representant_nom" id="representant_nom" class="form-control" placeholder="Nom" name="representant_nom" >
-        </div>
-        <label for="representant_datenaissance">Date Naissance </label>
-        <div >
-          <input [(ngModel)]="liste.representant_datenaissance" id="representant_datenaissance" class="form-control" placeholder="Date Naissance" name="representant_datenaissance" >
-        </div>
-        <label for="representant_cni">Numéro Electeur</label>
-        <div >
-          <input [(ngModel)]="liste.representant_cni" id="representant_cni" class="form-control" placeholder="CNI" name="representant_cni" >
-        </div>
-        <label for="representant_adresse">Adresse</label>
-        <div >
-          <input [(ngModel)]="liste.representant_adresse" id="representant_adresse" class="form-control" placeholder="Adresse" name="representant_adresse" >
-        </div>
-        <label for="comm_id">Commune</label>
-        <div>
-          <select  disabled="disabled" name="comm_id"  class="form-control" id="exampleFormControlSelect1">
+                <label for="nom_liste">Nom de la Liste</label>
+                <div>
+                    <input disabled="disabled" [(ngModel)]="liste.nom_liste" id="nom_liste" class="form-control" placeholder="nom liste" name="nom_liste">
+                </div>
+                <label for="code">Code</label>
+                <div>
+                    <input disabled="disabled" [(ngModel)]="liste.code" id="code" class="form-control" placeholder="Code" name="code">
+                </div>
+                <label for="representant_prenom">Prénom Representant</label>
+                <div>
+                    <input [(ngModel)]="liste.representant_prenom" id="representant_prenom" class="form-control" placeholder="Prenom" name="representant_prenom">
+                </div>
+                <label for="representant_nom">Nom Representant</label>
+                <div>
+                    <input [(ngModel)]="liste.representant_nom" id="representant_nom" class="form-control" placeholder="Nom" name="representant_nom">
+                </div>
+                <label for="representant_datenaissance">Date Naissance </label>
+                <div>
+                    <input [(ngModel)]="liste.representant_datenaissance" id="representant_datenaissance" class="form-control" placeholder="Date Naissance" name="representant_datenaissance">
+                </div>
+                <label for="representant_cni">Numéro Electeur</label>
+                <div>
+                    <input [(ngModel)]="liste.representant_cni" id="representant_cni" class="form-control" placeholder="CNI" name="representant_cni">
+                </div>
+                <label for="representant_adresse">Adresse</label>
+                <div>
+                    <input [(ngModel)]="liste.representant_adresse" id="representant_adresse" class="form-control" placeholder="Adresse" name="representant_adresse">
+                </div>
+                <label for="comm_id">Commune</label>
+                <div>
+                    <select disabled="disabled" name="comm_id" class="form-control" id="exampleFormControlSelect1">
             <option >{{liste?.comm?.code}}</option>
           </select>
-        </div>
+                </div>
 
-      </div>
-    </form>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-warning center" (click)="edit_list_electoral()+modal2.close('Save click')">Modifier</button>
-  </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-warning center" (click)="edit_list_electoral()+modal2.close('Save click')">Modifier</button>
+    </div>
 </ng-template>
 
 
 <ng-template #content3 let-modal2>
 
-  <div class="modal-content">
+    <div class="modal-content">
 
 
-      <h4 class="modal-title">Are you sure?</h4>
+        <h4 class="modal-title">Are you sure?</h4>
 
 
-   <div class="modal-footer justify-content-center">
-        <button  (click)="modal2.close('Save click')" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button  (click)="supprimer()+ modal2.close('Save click');" type="button" class="btn btn-danger">Delete</button>
+        <div class="modal-footer justify-content-center">
+            <button (click)="modal2.close('Save click')" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button (click)="supprimer()+ modal2.close('Save click');" type="button" class="btn btn-danger">Delete</button>
+        </div>
+
     </div>
-
-</div>
 </ng-template>
