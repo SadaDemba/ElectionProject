@@ -1,7 +1,7 @@
 import { AdministrateurService } from 'src/app/services/administrateur.service';
 import { AnneeService } from './../../../services/annee.service';
 import { Component, OnInit } from '@angular/core';
-import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalDismissReasons, NgbModal } from 'ng-bootstrap';
 import { Annee } from 'src/app/modele/annee';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute } from '@angular/router';
@@ -26,7 +26,7 @@ export class AnneeComponent implements OnInit {
   constructor(private service:AnneeService,private modalService: NgbModal,private toastr: ToastrService,private adminis:AdministrateurService) { }
 
   ngOnInit(): void {
-    
+
     this.getAnnee();
 
   }

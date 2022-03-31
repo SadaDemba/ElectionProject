@@ -1,7 +1,7 @@
 import { CommuneService } from './../../../services/commune.service';
 import { ListelectoralService } from './../../../services/listelectoral.service';
 import { Component, OnInit } from '@angular/core';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal, ModalDismissReasons} from 'ng-bootstrap';
 import { ListElectoral } from 'src/app/modele/listelectoral';
 import { ToastrService } from 'ngx-toastr';
 import { UploadFileModel } from 'src/app/shared/classes/upload-file-model';
@@ -126,10 +126,10 @@ edit_list_electoral()
 
 open2(content:any,liste:ListElectoral) {
   this.liste = liste;
-  this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+  this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result: any) => {
     this.closeResult = `Closed with: ${result}`;
 
-  }, (reason) => {
+  }, (reason: any) => {
     this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
   });
 }
@@ -149,9 +149,9 @@ supprimer()
 
  open1(content:any ,liste:ListElectoral) {
   this.liste=liste;
-  this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+  this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result: any) => {
     this.closeResult = `Closed with: ${result}`;
-  }, (reason) => {
+  }, (reason: any) => {
     this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
   });
 }
@@ -160,9 +160,9 @@ supprimer()
 
 
   open(content:any ) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result: any) => {
       this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
+    }, (reason: any) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }

@@ -1,7 +1,7 @@
 import { Administrateur } from 'src/app/modele/administrateur';
 import { Component, OnInit } from '@angular/core';
 import { AdministrateurService } from 'src/app/services/administrateur.service';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal, ModalDismissReasons} from 'ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-liste-admin',

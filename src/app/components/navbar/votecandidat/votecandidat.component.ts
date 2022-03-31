@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ElecteurService } from 'src/app/services/electeur.service';
 import { Annee } from 'src/app/modele/annee';
 import { ToastrService } from 'ngx-toastr';
-import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalDismissReasons, NgbModal } from 'ng-bootstrap';
 import { RegionService } from 'src/app/services/region.service';
 @Component({
   selector: 'app-votecandidat',
