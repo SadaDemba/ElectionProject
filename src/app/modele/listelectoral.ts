@@ -1,13 +1,14 @@
-export interface ListElectoral {
-  id:number ;
-  nom_liste:string;
-  code:string;
-  representant_nom:string;
-  representant_prenom:string;
-  representant_cni:string;
-  representant_adresse:string;
-  representant_datenaissance:string;
+export class ListElectoral {
+  id:number | undefined; ;
+  nom_liste:string | undefined;;
+  code:string | undefined;;
+  representant_nom:string | undefined;;
+  representant_prenom:string | undefined;;
+  representant_cni:string | undefined;;
+  representant_adresse:string | undefined;;
+  representant_datenaissance:string | undefined;;
   comm_id:any;
-  photo:string;
+  photo:string | undefined;
+  photo_path: string | undefined;
   comm:any;
 }

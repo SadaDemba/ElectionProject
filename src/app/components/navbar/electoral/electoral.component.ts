@@ -7,6 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { UploadFileModel } from 'src/app/shared/classes/upload-file-model';
 import { HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
+import { FileService } from 'src/app/services/file.service';
 @Component({
   selector: 'app-electoral',
   templateUrl: './electoral.component.html',
@@ -18,23 +19,11 @@ export class ElectoralComponent implements OnInit  {
   titre:any;
   proccessing=false;
   communes:any=[];
-  liste:ListElectoral={
-    id: 0,
-    nom_liste: '',
-    code: '',
-    representant_prenom: '',
-    representant_nom: '',
-    representant_adresse: '',
-    representant_cni: '',
-    representant_datenaissance: '',
-    comm_id: 0,
-    photo:'',
-    comm:''
-  }
+  liste= new ListElectoral()
   login: any;
 
 
-  constructor(private route:ActivatedRoute,private service:ListelectoralService,private modalService: NgbModal,private communeservice:CommuneService,private toastr: ToastrService) { }
+  constructor(private route:ActivatedRoute,private service:ListelectoralService,private modalService: NgbModal,private communeservice:CommuneService,private toastr: ToastrService,public fileSrv: FileService) { }
 
   ngOnInit(): void {
     this.listelectoral=this.getListe();
@@ -63,10 +52,12 @@ successmsg2(){
      /* Variabe to store file data */
     public filedata:any;
     /* File onchange event */
-    fileEvent(e:any){
-        this.filedata = e.target.files[0];
-
-
+    fileEvent(evt:any){
+      this.fileSrv.convertImageToBase64String(evt)
+      .then((data: string) => {
+        this.liste.photo = data;
+      })
+      .catch(() => { });
     }
 
 
@@ -92,17 +83,6 @@ successmsg2(){
   }
  addliste()
  {
-  let reader = new FileReader();
-  reader.readAsDataURL(this.filedata);
-  reader.onload =  ()=> {
-
-    this.liste.photo=reader.result as any;
-    console.log(this.liste.photo);
-
-  };
-  reader.onerror = function (error) {
-    console.log('Error: ', error);
-  };
 
   console.log(this.liste);
 
@@ -136,7 +116,7 @@ open2(content:any,liste:ListElectoral) {
 
 supprimer()
 {
-  this.service.delete_candidat(this.liste.id).subscribe((data:{})=>{
+  this.service.delete_candidat(Number(this.liste.id)).subscribe((data:{})=>{
     console.log(data);
     this.successmsg2();
     this.ngOnInit();
@@ -187,7 +167,7 @@ supprimer()
     else
     {
       this.listelectoral=this.listelectoral.filter((result: ListElectoral)=>{
-        return result.representant_prenom.toLocaleLowerCase().match(this.titre.toLocaleLowerCase());
+        return String(result.representant_prenom).toLocaleLowerCase().match(this.titre.toLocaleLowerCase());
       })
     }
   }
