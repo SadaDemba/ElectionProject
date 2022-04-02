@@ -32,6 +32,11 @@ export class ListelectoralService {
     return this.http.get<ListElectoral[]>(this.url +'/candidat/'+param);
   }
 
+  getCandidatFindById(id:any)
+  {
+    return this.http.get<ListElectoral>(this.url +'/candidatInfos/'+id);
+  }
+
   Edit_Candidat(id :any,param:ListElectoral)
   {
     console.log("in getEdit : "+JSON.stringify(param));

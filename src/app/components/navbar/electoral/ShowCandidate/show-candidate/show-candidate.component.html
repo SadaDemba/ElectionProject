@@ -8,17 +8,14 @@
                 <div class="card-body">
                     <h5 class="card-title">Informations relatives au representant </h5>
                     <div class="center">
-                        <img class="card-img-top img-fluid center
-
-                  " src="" style="width:150px;height:150px;"><br>
+                        <img class="card-img-top img-fluid center" src="{{liste?.photo_path}}" style="width:150px;height:150px;"><br>
                     </div>
 
-                    <label for=""><b> PRENOM :</b></label><br>
-                    <label for=""><b> NOM :</b></label><br>
-                    <label for=""><b> DATE NAISSANCE :</b></label><br>
-                    <label for=""><b> COMMUNE :</b></label><br>
-                    <label for=""><b> CNI :</b></label><br>
-                    <label for=""><b> ADRESSE :</b></label><br>
+                    <label for=""><b> PRENOM : </b> {{liste?.representant_prenom}}</label><br>
+                    <label for=""><b> NOM : </b>{{liste?.representant_nom}}</label><br>
+                    <label for=""><b> DATE NAISSANCE : </b>{{liste?.representant_datenaissance}}</label><br>
+                    <label for=""><b> ADRESSE : </b>{{liste?.representant_adresse}}</label><br>
+                    <label for=""><b> CNI : </b></label>{{liste?.representant_cni}}<br>
                 </div>
             </div>
 
@@ -28,9 +25,9 @@
                 <div class="card-body">
                     <h5 class="card-title">Informations relatives à la liste</h5>
                     <p class="card-text">
-                        <label for=""><b> NOM LISTE :</b></label><br>
-                        <label for=""><b> CODE :</b></label><br>
-                        <label for=""><b> COMMUNE :</b></label><br>
+                        <label for=""><b> NOM LISTE : </b>{{liste?.nom_liste}}</label><br>
+                        <label for=""><b> CODE : </b>{{liste?.code}}</label><br>
+                        <label for=""><b> COMMUNE : </b>{{liste?.comm?.libelle}} </label><br>
                     </p>
                 </div>
             </div>
