@@ -24,7 +24,7 @@ import { StatistiquesComponent } from './components/navbar/statistiques/statisti
 import { NgApexchartsModule } from "ng-apexcharts";
 import { PieChartComponent } from './components/navbar/pie-chart/pie-chart.component';
 import { ListeAdminComponent } from './components/navbar/liste-admin/liste-admin.component';
-import { ShowCandidateComponent } from './components/navbar/electoral/ShowCandidate/show-candidate/show-candidate.component';  
+import { ShowCandidateComponent } from './components/navbar/electoral/ShowCandidate/show-candidate/show-candidate.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +53,7 @@ import { ShowCandidateComponent } from './components/navbar/electoral/ShowCandid
     HttpClientModule,
     FormsModule,
     NgApexchartsModule,
-    AppRoutingModule, BrowserAnimationsModule,
+    BrowserAnimationsModule,
     ToastrModule.forRoot()
   ],
   providers: [],

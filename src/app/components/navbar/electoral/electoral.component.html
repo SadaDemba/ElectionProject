@@ -70,7 +70,7 @@
 
                                             <td> <a [routerLink]="" (click)="open1(content2,liste)" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
                                                 <a [routerLink]="" (click)="open2(content3,liste)" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-                                              <a class="vue" title="Delete" data-toggle="tooltip"><i class="material-icons">remove_red_eye</i></a>
+                                                <a class="vue" routerLink="/show-candidat/{{ liste.id }}" title="Show" data-toggle="tooltip"><i class="material-icons">remove_red_eye</i></a>
                                             </td>
                                         </tr>
 
@@ -223,6 +223,3 @@
 
     </div>
 </ng-template>
-
-
-

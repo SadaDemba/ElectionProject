@@ -1,3 +1,4 @@
+import { ShowCandidateComponent } from './components/navbar/electoral/ShowCandidate/show-candidate/show-candidate.component';
 import { StatistiquesComponent } from './components/navbar/statistiques/statistiques.component';
 import { AddAdminComponent } from './components/navbar/add-admin/add-admin.component';
 import { VotecandidatComponent } from './components/navbar/votecandidat/votecandidat.component';
@@ -26,8 +27,9 @@ const routes: Routes = [
   {path:'voter',component:VoterComponent},
   {path:'votecandidat/:cni',component:VotecandidatComponent},
   {path:'administrateur',component:AdministrateurComponent},
-  {path:'carte',component:CarteComponent},
   {path:'addAdmin',component:AddAdminComponent},
+  {path:'carte',component:CarteComponent},
+  {path:'show-candidat/:id',component:ShowCandidateComponent},
   {path:'statistique',component:StatistiquesComponent},
   {path:'listAdmin',component:ListeAdminComponent},
   {path:'pieChart',component:PieChartComponent, canActivate: [StatistiqueService]}
