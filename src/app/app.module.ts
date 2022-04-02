@@ -23,7 +23,8 @@ import { NavadministrateurComponent } from './navadministrateur/navadministrateu
 import { StatistiquesComponent } from './components/navbar/statistiques/statistiques.component';
 import { NgApexchartsModule } from "ng-apexcharts";
 import { PieChartComponent } from './components/navbar/pie-chart/pie-chart.component';
-import { ListeAdminComponent } from './components/navbar/liste-admin/liste-admin.component';  
+import { ListeAdminComponent } from './components/navbar/liste-admin/liste-admin.component';
+import { ShowCandidateComponent } from './components/navbar/electoral/ShowCandidate/show-candidate/show-candidate.component';  
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +44,7 @@ import { ListeAdminComponent } from './components/navbar/liste-admin/liste-admin
     StatistiquesComponent,
     PieChartComponent,
     ListeAdminComponent,
+    ShowCandidateComponent,
   ],
   imports: [
     BrowserModule,

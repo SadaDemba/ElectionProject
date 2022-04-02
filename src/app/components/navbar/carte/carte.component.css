@@ -4,27 +4,27 @@
  }
 
  .map-image .is-active path{
-     fill: rgb(130, 0, 252);
+     fill: rgba(1, 64, 255, 0.98);
  }
 
  .map-image path{
-    fill: #698cb4fb;;
+    fill: rgba(171, 194, 253, 0.98);
     stroke: #fff;
-    stroke-width: 1px; 
+    stroke-width: 1px;
     transition: fill 0.3s;
 }
 
  .map-list{
-     
+
      width: 15%;
-     background-color: #698cb4fb;;
+     background-color: rgba(171, 194, 253, 0.98);
      border-radius: 4%;
      height:fit-content
  }
 
  .map-list a.is-active {
-    
-    color: rgb(130, 0, 252);
+
+    color: rgb(255, 255, 255);
     font-weight: bold;
     text-decoration-line: blink;
 }
@@ -42,7 +42,7 @@
   }
   .commList{
     width: fit-content;
-    background-color: #698cb4fb;;
+    background-color: rgba(171, 194, 253, 0.98);
     border-radius: 4%;
     height:fit-content
   }

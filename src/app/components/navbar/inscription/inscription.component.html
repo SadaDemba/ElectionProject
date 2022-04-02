@@ -1,78 +1,116 @@
-<app-home></app-home>
 
-<body>
-    <div class="col-sm-12">
+<br>
+    <div class="containers">
+      <div class="container" style="">
+        <div class="card" style="border-radius: 1rem;">
+          <div class="card-title" style="text-align: center; color: #42bd00"><h1>Inscription sur la liste électorale</h1></div>
+            <div class="row">
+            <div class="col-md-6 col-lg-5 d-none d-md-block">
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img1.webp" alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
+            </div>
+              <div class="col-sm-6">
+                <div class=" row ">
+                  <div class="">
+                    <div class="form-container ">
+                      <h3 class="title">S'inscrire</h3>
+                      <form class="form-horizontal" style="text-align: center">
+                        <div class="form-icon">
+                          <i class="fa fa-user-circle"></i>
+                        </div>
+
+                        <label *ngIf="expression==0"  class=""><h4 style="color: black">Région</h4></label>
+                        <div *ngIf="expression==0"  class="form-group">
+                          <span class="input-icon"><i class="fa fa-home"></i></span>
+                          <select [(ngModel)]="regionObj" name="region" class="form-control" id="region">
+                            <option  *ngFor="let region of regions" [value]="region.id">{{region?.libelle}}</option>
+                          </select>
+                        </div>
 
 
-        <div class="signup-form responsive">
-            <form action="/examples/actions/confirmation.php" method="post" class="form-horizontal">
-                <div class="row">
-                    <div class="col-8 offset-4">
-                        <h2>S'inscrire</h2>
+                        <label *ngIf="expression==1" class=""><h4 style="color: black">Département</h4></label>
+
+                        <div *ngIf="expression==1" class="form-group">
+                          <span class="input-icon"><i class="fa fa-home"></i></span>
+                          <select [(ngModel)]="communeObj" name="commune" class="form-control" id="commune">
+                            <option *ngFor="let commune of communes" [value]="commune.id">{{commune?.libelle}}</option>
+                          </select>
+                        </div>
+
+
+                        <label *ngIf="expression==2"  class=""><h4 style="color: black">Arrondissement</h4></label>
+                        <div *ngIf="expression==2" class="form-group">
+                          <span class="input-icon"><i class="fa fa-home"></i></span>
+                          <select [(ngModel)]="commObjet" name="centre" class="form-control" id="centre">
+                            <option *ngFor="let centre of centres" [value]="centre.id">{{centre?.libelle}}</option>
+                          </select>
+                        </div>
+
+
+                        <label *ngIf="expression==3"  style="color: rgb(3, 9, 10);">Commune</label>
+                        <div *ngIf="expression==3" class="form-group">
+                          <span class="input-icon"><i class="fa fa-home"></i></span>
+                          <select [(ngModel)]="electeur.comm_id" name="comm" class="form-control" id="comm">
+                            <option *ngFor="let comm of comms" [value]="comm.id">{{comm?.libelle}}</option>
+                          </select>
+                        </div>
+                        <label *ngIf="expression==3" style="color: rgb(3, 9, 10);">Prénom</label>
+                        <div *ngIf="expression==3" class="form-group">
+                          <span class="input-icon"><i class="fa fa-user"></i></span>
+                          <input [(ngModel)]="electeur.prenom" type="text" class="form-control" id="prenom" name="prenom" placeholder="Saisir prénom">
+                        </div>
+                        <label *ngIf="expression==3" class="" style="color: rgb(3, 9, 10);">Nom</label>
+
+                        <div *ngIf="expression==3" class="form-group">
+                          <span class="input-icon"><i class="fa fa-user"></i></span>
+                          <input [(ngModel)]="electeur.nom" type="text" class="form-control" id="nom" name="nom" placeholder="Saisir nom">
+                        </div>
+                        <label *ngIf="expression==3" style="color: rgb(3, 9, 10);">Date de Naissance</label>
+                        <div *ngIf="expression==3" class="form-group">
+                          <input [(ngModel)]="electeur.datenaissance" type="Date" class="form-control" id="datenaissance" name="datenaissance">
+                        </div>
+                        <label *ngIf="expression==3" style="color: rgb(3, 9, 10);">Numéro Electeur</label>
+                        <div *ngIf="expression==3" class="form-group">
+                          <span class="input-icon"><i class="fa fa-user"></i></span>
+                          <input [(ngModel)]="electeur.cni" type="text" class="form-control" id="cni" name="cni">
+                        </div>
+                        <label *ngIf="expression==3"style="color: rgb(3, 9, 10);">Adresse</label>
+                        <div *ngIf="expression==3" class="form-group">
+                          <span class="input-icon"><i class="fa fa-home"></i></span>
+                          <input [(ngModel)]="electeur.adresse" type="text" class="form-control" id="adresse" name="adresse">
+                        </div>
+
+
+
+
+                        <br>
+                        <div *ngIf="expression!=3">
+                          <button  class="btn signin" (click)="disponible()">Suivant</button>
+                        </div>
+                        <div *ngIf="expression==3">
+                          <button  class="btn signin" (click)="AddElecteur()" >Enregistrer</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                        </div>
+                        <br>
+                        <a href="" style="color: black">Annuler</a>
+                      </form>
                     </div>
+                  </div>
                 </div>
-                <label *ngIf="expression==0" class="col-form-label col-6" style="color: rgb(3, 9, 10);">Région</label>
-                <div *ngIf="expression==0" class="col-8">
-                    <select [(ngModel)]="regionObj" name="region" class="form-control" id="region">
-            <option  *ngFor="let region of regions" [value]="region.id">{{region?.libelle}}</option>
-          </select>
-                </div>
-                <label *ngIf="expression==1" class="col-form-label col-6" style="color: rgb(3, 9, 10);">Département</label>
-                <div *ngIf="expression==1" class="col-8">
-                    <select [(ngModel)]="communeObj" name="commune" class="form-control" id="commune">
-            <option *ngFor="let commune of communes" [value]="commune.id">{{commune?.libelle}}</option>
-          </select>
-                </div>
-                <label *ngIf="expression==2" class="col-form-label col-6" style="color: rgb(3, 9, 10);">Arrondisssement</label>
-                <div *ngIf="expression==2" class="col-8">
-                    <select [(ngModel)]="commObjet" name="centre" class="form-control" id="centre">
-            <option *ngFor="let centre of centres" [value]="centre.id">{{centre?.libelle}}</option>
-          </select>
-                </div>
-                <label *ngIf="expression==3" class="col-form-label col-6" style="color: rgb(3, 9, 10);">Communes</label>
-                <div *ngIf="expression==3" class="col-8">
-                    <select [(ngModel)]="electeur.comm_id" name="comm" class="form-control" id="comm">
-            <option *ngFor="let comm of comms" [value]="comm.id">{{comm?.libelle}}</option>
-          </select>
-                </div>
-                <label *ngIf="expression==3" class="col-form-label col-6" style="color: rgb(3, 9, 10);">Prénom</label>
-                <div *ngIf="expression==3" class="col-8">
-                    <input [(ngModel)]="electeur.prenom" type="text" class="form-control" id="prenom" name="prenom">
-                </div>
-                <label *ngIf="expression==3" class="col-form-label col-6" style="color: rgb(3, 9, 10);">Nom</label>
-                <div *ngIf="expression==3" class="col-8">
-                    <input [(ngModel)]="electeur.nom" type="text" class="form-control" id="nom" name="nom">
-                </div>
-                <label *ngIf="expression==3" class="col-form-label col-6" style="color: rgb(3, 9, 10);">Date de Naissance</label>
-                <div *ngIf="expression==3" class="col-8">
-                    <input [(ngModel)]="electeur.datenaissance" type="Date" class="form-control" id="datenaissance" name="datenaissance">
-                </div>
-                <label *ngIf="expression==3" class="col-form-label col-6" style="color: rgb(3, 9, 10);">Numéro Electeur</label>
-                <div *ngIf="expression==3" class="col-8">
-                    <input [(ngModel)]="electeur.cni" type="text" class="form-control" id="cni" name="cni">
-                </div>
-                <label *ngIf="expression==3" class="col-form-label col-6" style="color: rgb(3, 9, 10);">Adresse</label>
-                <div *ngIf="expression==3" class="col-8">
-                    <input [(ngModel)]="electeur.adresse" type="text" class="form-control" id="adresse" name="adresse">
-                </div>
-
-                <div class="form-group row">
-                    <div *ngIf="expression!=3" class="col-8 offset-4">
-                        <button type="button" (click)="disponible()" class="btn btn-primary btn-lg" style="color: rgb(243, 249, 250);">Suivant</button>
-                    </div>
-                    <button *ngIf="expression==3" (click)="AddElecteur()" class="btn btn-info btn-lg" style="color: rgb(243, 249, 250);">Enregistre</button>
-                </div>
-            </form>
+              </div>
+          </div>
 
         </div>
+
+      </div>
     </div>
-</body>
+
+    <br>
 
 
 
-<footer class="py-5  " style="background-color: #698cb4fb;">
+
+<!--<footer class="py-5  " style="background-color: #698cb4fb;">
     <div class="container">
         <p class="m-0 text-center text-white">Sénégal &copy; Elections Legislatives</p>
     </div>
-    <!-- /.container -->
-</footer>
+    &lt;!&ndash; /.container &ndash;&gt;
+</footer>-->

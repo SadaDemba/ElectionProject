@@ -1,7 +1,7 @@
 #chart {
     /* max-width: 380px; */
     width: fit-content;
-    background-color: gray;
+    background-color: #c9c5c5;
     margin: 35px auto;
     padding: 0;
   }
@@ -14,3 +14,4 @@
 .btn{
     border-radius: 20px;
 }
+

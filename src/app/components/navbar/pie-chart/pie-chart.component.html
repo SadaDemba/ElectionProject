@@ -1,19 +1,26 @@
 <app-home></app-home>
-<div class=" d-flex flex-column min-vh-100 justify-content-center align-items-center col" id="Chart">
-    <div class="row">
-
+<br>
+<div class="container" style="text-align: center">
+  <div class="card-group " >
+    <div class="card" style="background: rgba(171, 194, 253, 0.98)">
+      <div class="card-img-body" style="background: #c9c5c5">
         <div id="chart">
-            <apx-chart
-              [series]="chartOptions.series"
-              [chart]="chartOptions.chart"
-              [labels]="chartOptions.labels"
-              [responsive]="chartOptions.responsive"
-            ></apx-chart>
-          </div>
-    
+          <apx-chart
+            [series]="chartOptions.series"
+            [chart]="chartOptions.chart"
+            [labels]="chartOptions.labels"
+            [responsive]="chartOptions.responsive"
+          ></apx-chart>
+        </div>
+      </div>
+      <div class="card-body">
+        <h4 class="card-title">Diagramme Circulaire</h4>
+        <p class="card-text">Ceci est la représentation des résultats de l'élection législative dans la région de {{region}}<em [hidden]="!Commune()">, commune de {{comm}}</em>. </p>
+        <a href="#" class="btn btn-outline-primary">
+          <button  type="button" class="btn btn-primary btn-block"> Retour </button>
+        </a>
+      </div>
     </div>
-    <a href="carte" class="btn btn-primary btn-block">
-        <button  type="button" class="btn btn-primary btn-block">Retour</button>
-    </a>
-    
+  </div>
 </div>
+<br>

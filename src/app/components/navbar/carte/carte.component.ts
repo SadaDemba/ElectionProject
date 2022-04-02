@@ -150,7 +150,7 @@ links = this.map?.querySelectorAll('.map-list a');
         {
           this.tabDeNoms.push("Suffrage non exprimé")
           this.tabDeVotes.push(this.nbInscrits-this.nbVotes)
- 
+
         }
         if(this.tabDeNoms.length==0)
         {
@@ -166,20 +166,22 @@ links = this.map?.querySelectorAll('.map-list a');
     //faire ce qui est dans le premier if d'abord
     if(n==2)
     {
+      this.service.comm=commune;
+      this.service.region=this.region;
       //remplacer le libelle de la commune par son code
       this.service.getCodeCommuneByLibelle(commune).subscribe((data)=>
       {
         this.codeCommune=data[0].Code;
-  
+
         //Récuperer les resultats dans la commune indiqué en parametre
         this.service.getcountStatByCandidateInComm(this.codeCommune).subscribe((data)=>{
           this.tabDeNoms=[];
           this.tabDeVotes=[];
           data.forEach(element => {
-            console.log(this.tabDeNoms+"aka"+this.codeCommune);
+
             this.tabDeNoms.push(JSON.stringify(element.NomListe))
             this.tabDeVotes.push(element.total.valueOf())
-            console.log(this.tabDeNoms+"kessei");
+
           });
           this.service.getcountStatInscritInCommune(this.codeCommune).subscribe((data)=>{
             if(data.length!=0)
@@ -197,15 +199,14 @@ links = this.map?.querySelectorAll('.map-list a');
               {
                 this.tabDeNoms.push("Suffrage non exprimé")
                 this.tabDeVotes.push(this.nbInscrits-this.nbVotes)
-       
+
               }
               if(this.tabDeNoms.length==0)
               {
                 this.tabDeNoms.push("Pas d'inscrit dans cette localité");
                 this.tabDeVotes.push(100);
               }
-              console.log(this.nbInscrits+"heeiii");
-              console.log(this.tabDeNoms+" -a- "+this.tabDeVotes);
+
               //Renseigner le diagramme circulaire les données des résultats
               this.service.getStat().subscribe((data)=>
             {
@@ -215,14 +216,14 @@ links = this.map?.querySelectorAll('.map-list a');
               this.service.tabDeVotes=this.tabDeVotes;
             });
             })
-            
+
           })
-         
-          
+
+
         })
         console.log(this.tabDeNoms+" ---- "+this.tabDeVotes);
-       
-        
+
+
       })
 
 
@@ -235,11 +236,12 @@ links = this.map?.querySelectorAll('.map-list a');
         this.route.navigate(['/pieChart']);
         this.service.tabDeNoms=this.tabDeNoms;
         this.service.tabDeVotes=this.tabDeVotes;
+        this.service.region=this.region;
       });
     }
 
 
-    
+
   }
 
 

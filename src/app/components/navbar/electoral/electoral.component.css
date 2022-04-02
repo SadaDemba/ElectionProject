@@ -68,6 +68,9 @@ table.table td a.edit {
 table.table td a.delete {
   color: #E34724;
 }
+table.table td a.vue {
+  color: #305e86;
+}
 table.table td i {
   font-size: 19px;
 }
@@ -79,3 +82,9 @@ table.table td i {
   margin: -20px -25px 10px;
   border-radius: 3px 3px 0 0;
 }
+
+
+
+
+
+

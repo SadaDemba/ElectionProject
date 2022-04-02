@@ -21,12 +21,16 @@ export class PieChartComponent implements OnInit {
   public chartOptions: Partial<ChartOptions>;
   tabDeNoms:string[]=[];
   tabDeVotes:number[]=[]
-  
-  constructor(private service:StatistiqueService) 
+  region:string="";
+  comm:string="";
+
+  constructor(private service:StatistiqueService)
   {
     this.tabDeNoms=this.service.tabDeNoms;
     this.tabDeVotes=this.service.tabDeVotes;
-
+    this.region=this.service.region;
+    this.comm=this.service.comm;
+    console.log("Région="+this.region+" | Commune="+this.comm);
 
     this.chartOptions = {
       series: this.tabDeVotes,
@@ -41,7 +45,7 @@ export class PieChartComponent implements OnInit {
           options: {
             chart: {
               width: 1000,
-              
+
             },
             legend: {
               position: "center",
@@ -55,8 +59,15 @@ export class PieChartComponent implements OnInit {
 
   }
 
+
   ngOnInit(): void {
 
+  }
+  Commune():boolean
+  {
+    if(this.comm=="")
+      return false;
+    return true;
   }
 
 }

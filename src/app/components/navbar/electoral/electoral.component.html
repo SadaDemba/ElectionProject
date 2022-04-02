@@ -70,6 +70,7 @@
 
                                             <td> <a [routerLink]="" (click)="open1(content2,liste)" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
                                                 <a [routerLink]="" (click)="open2(content3,liste)" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                                              <a class="vue" title="Delete" data-toggle="tooltip"><i class="material-icons">remove_red_eye</i></a>
                                             </td>
                                         </tr>
 
@@ -97,7 +98,7 @@
 <!-- /.Modal pour ajouter une nouvelle liste -->
 <ng-template #content1 let-modal1>
     <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">Enregistrer Liste Electoral</h4>
+        <h4 class="modal-title" id="modal-basic-title1">Enregistrer Liste Electoral</h4>
         <button type="button" class="close" aria-label="Close" (click)="modal1.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -105,37 +106,37 @@
     <div class="modal-body">
         <form enctype="multipart/form-data" method="post">
             <div class="form-group">
-                <label for="nom_liste"><b> Nom de la Liste</b></label>
+                <label for="nom_liste2"><b> Nom de la Liste</b></label>
                 <div>
-                    <input [(ngModel)]="liste.nom_liste" id="nom_liste" class="form-control" placeholder="Nom Liste" name="nom_liste">
+                    <input [(ngModel)]="liste.nom_liste" id="nom_liste2" class="form-control" placeholder="Nom Liste" name="nom_liste">
                 </div>
-                <label for="code"><b>Code</b></label>
+                <label for="code1"><b>Code</b></label>
                 <div>
-                    <input [(ngModel)]="liste.code" id="code" class="form-control" placeholder="Code" name="code">
+                    <input [(ngModel)]="liste.code" id="code1" class="form-control" placeholder="Code" name="code">
                 </div>
-                <label for="representant_prenom"><b>Prénom Representant</b></label>
+                <label for="representant_prenom1"><b>Prénom Representant</b></label>
                 <div>
-                    <input [(ngModel)]="liste.representant_prenom" id="representant_prenom" class="form-control" placeholder="Prenom" name="representant_prenom">
+                    <input [(ngModel)]="liste.representant_prenom" id="representant_prenom1" class="form-control" placeholder="Prenom" name="representant_prenom">
                 </div>
-                <label for="representant_nom"><b>Nom Representant</b></label>
+                <label for="representant_nom1"><b>Nom Representant</b></label>
                 <div>
-                    <input [(ngModel)]="liste.representant_nom" id="representant_nom" class="form-control" placeholder="Nom" name="representant_nom">
+                    <input [(ngModel)]="liste.representant_nom" id="representant_nom1" class="form-control" placeholder="Nom" name="representant_nom">
                 </div>
-                <label for="representant_datenaissance"><b>Date Naissance </b></label>
+                <label for="representant_datenaissance1"><b>Date Naissance </b></label>
                 <div>
-                    <input [(ngModel)]="liste.representant_datenaissance" id="representant_datenaissance" class="form-control" placeholder="Date Naissance" name="representant_datenaissance">
+                    <input [(ngModel)]="liste.representant_datenaissance" id="representant_datenaissance1" class="form-control" placeholder="Date Naissance" name="representant_datenaissance">
                 </div>
-                <label for="representant_cni"><b>Numéro Electeur</b></label>
+                <label for="representant_cni1"><b>Numéro Electeur</b></label>
                 <div>
-                    <input [(ngModel)]="liste.representant_cni" id="representant_cni" class="form-control" placeholder="CNI" name="representant_cni">
+                    <input [(ngModel)]="liste.representant_cni" id="representant_cni1" class="form-control" placeholder="CNI" name="representant_cni">
                 </div>
-                <label for="representant_adresse"><b>Adresse</b></label>
+                <label for="representant_adresse1"><b>Adresse</b></label>
                 <div>
-                    <input [(ngModel)]="liste.representant_adresse" id="representant_adresse" class="form-control" placeholder="Adresse" name="representant_adresse">
+                    <input [(ngModel)]="liste.representant_adresse" id="representant_adresse1" class="form-control" placeholder="Adresse" name="representant_adresse">
                 </div>
                 <label for="comm_id"><b>Commune</b></label>
                 <div>
-                    <select [(ngModel)]="liste.comm_id" name="comm_id" class="form-control" id="exampleFormControlSelect1">
+                    <select [(ngModel)]="liste.comm_id" name="comm_id" class="form-control" id="comm_id">
             <option *ngFor="let commune of communes" [value]="commune.id" >{{commune?.code}}</option>
           </select>
                 </div>
@@ -222,3 +223,6 @@
 
     </div>
 </ng-template>
+
+
+

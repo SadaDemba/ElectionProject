@@ -17,6 +17,8 @@ export class StatistiqueService implements CanActivate {
   tabDeNoms!: string[] ;
   tabDeVotes:number[]=[];
   a:string[] = [];
+  region:string="";
+  comm:string="";
   httpOption={
     headers:new HttpHeaders({
       'Content-Type':'Application/json',

@@ -17,9 +17,9 @@ export class InscriptionComponent implements OnInit {
   communes:any=[];
   centres:any=[];
   comms:any=[];
-  regionObj:any;
-  communeObj:any;
-  commObjet:any;
+  regionObj:any=null;
+  communeObj:any=null;
+  commObjet:any=null;
   commune:Commune={
     id:0,
     libelle:'',
@@ -42,7 +42,7 @@ electeur:Electeur={
   datenaissance:'',
   adresse:'',
   cni:'',
-  comm_id:0
+  comm_id:-1
 }
 
 
@@ -74,25 +74,41 @@ successmsg(){
 
   disponible()
   {
-    if(this.expression==3)
+    if(this.expression==3 && this.electeur.comm_id!=-1)
       this.expression=0;
     else
-      this.expression++;
+      if(this.expression==2 && this.commObjet!=null)
+      {
+        this.expression=3;
+        this.service.getComms(this.commObjet).subscribe((data:any[])=>{
+          this.comms=data;
+          console.log(data);
+        })
+      }
+      else
+        if(this.expression==1 && this.communeObj!=null)
+        {
+          this.expression=2;
+          this.service.getCentres(this.communeObj).subscribe((data:any[])=>{
+            this.centres=data;
+            console.log(data);
+          })
+        }
+      else
+      if(this.expression==0 && this.regionObj!=null)
+      {
+        this.service.getCommunes(this.regionObj).subscribe((data:any[])=>{
+          this.communes=data;
+          console.log(data);
+        })
+        this.expression=1;
+      }
 
-      this.service.getCommunes(this.regionObj).subscribe((data:any[])=>{
-        this.communes=data;
-        console.log(data);
-      })
 
-      this.service.getCentres(this.communeObj).subscribe((data:any[])=>{
-        this.centres=data;
-        console.log(data);
-      })
 
-      this.service.getComms(this.commObjet).subscribe((data:any[])=>{
-        this.comms=data;
-        console.log(data);
-      })
+
+
+
   }
 
   getRegion()

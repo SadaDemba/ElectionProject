@@ -1,11 +1,9 @@
-import { CommuneService } from './../../../services/commune.service';
-import { ListelectoralService } from './../../../services/listelectoral.service';
+import { CommuneService } from '../../../services/commune.service';
+import { ListelectoralService } from '../../../services/listelectoral.service';
 import { Component, OnInit } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from 'ng-bootstrap';
 import { ListElectoral } from 'src/app/modele/listelectoral';
 import { ToastrService } from 'ngx-toastr';
-import { UploadFileModel } from 'src/app/shared/classes/upload-file-model';
-import { HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { FileService } from 'src/app/services/file.service';
 @Component({
@@ -171,6 +169,8 @@ supprimer()
       })
     }
   }
+
+
 
 
 
